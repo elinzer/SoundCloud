@@ -7,7 +7,7 @@ Clone of SoundCloud
 
 <h2> API Documentation</h2>
 
-## FEATURE 0: USER AUTHORIXATION
+## FEATURE 0: USER AUTHORIZATION
 
 ### All endpoints that require authentication
 
