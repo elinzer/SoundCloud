@@ -52,8 +52,8 @@ Returns the information about the current user that is logged in.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /current-user
   * Body: none
 
 * Successful Response
@@ -79,8 +79,8 @@ information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /login
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -146,8 +146,8 @@ user's information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /create-account
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -238,8 +238,8 @@ Returns all the songs.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /songs
   * Body: none
 
 * Successful Response
@@ -272,8 +272,8 @@ Returns all the songs created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /:userId/songs
   * Body: none
 
 * Successful Response
@@ -306,8 +306,8 @@ Returns the details of a song specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /songs/:songId
   * Body: none
 
 * Successful Response
@@ -360,8 +360,8 @@ Creates and returns a new song.
 * Require Authentication: true
 * Require proper authorization: Album must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /songs
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -432,8 +432,8 @@ Updates and returns an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PATCH
+  * URL: /songs/:songId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -504,8 +504,8 @@ Deletes an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: /songs/:songId
   * Body: none
 
 * Successful Response
@@ -542,8 +542,8 @@ Returns all the Albums.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /albums
   * Body: none
 
 * Successful Response
@@ -574,8 +574,8 @@ Returns all the Albums created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /:userId/albums
   * Body: none
 
 * Successful Response
@@ -606,8 +606,8 @@ Returns the details of an album specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /albums/:albumId
   * Body: none
 
 * Successful Response
