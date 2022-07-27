@@ -665,8 +665,8 @@ Creates and returns a new album.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /albums
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -720,8 +720,8 @@ Updates and returns an existing album.
 * Require Authentication: true
 * Require proper authorization: Album must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PATCH
+  * URL: /albums/:albumId
   * Headers:
     * Content-Type: application/json
   * Body:
