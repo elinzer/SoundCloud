@@ -53,7 +53,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /current-user
+  * URL: /users/current
   * Body: none
 
 * Successful Response
@@ -147,7 +147,7 @@ user's information.
 * Require Authentication: false
 * Request
   * Method: POST
-  * URL: /create-account
+  * URL: /create-user
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -273,7 +273,7 @@ Returns all the songs created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /:userId/songs
+  * URL: /users/:userId/songs
   * Body: none
 
 * Successful Response
@@ -575,7 +575,7 @@ Returns all the Albums created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /:userId/albums
+  * URL: /users/:userId/albums
   * Body: none
 
 * Successful Response
@@ -789,7 +789,7 @@ Deletes an existing album.
 * Require proper authorization: Album must belong to the current user
 * Request
   * Method: DELETE
-  * URL: albums/:albumId
+  * URL: /albums/:albumId
   * Body: none
 
 * Successful Response
@@ -826,7 +826,7 @@ Returns all the comments that belong to a song specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: songs/:songId/comments
+  * URL: /songs/:songId/comments
   * Body: none
 
 * Successful Response
@@ -939,7 +939,7 @@ Update and return an existing comment.
 * Require proper authorization: Comment must belong to the current user
 * Request
   * Method: PUT
-  * URL: comments/:commentId
+  * URL: /comments/:commentId
   * Headers:
     * Content-Type: application/json
   * Body:
