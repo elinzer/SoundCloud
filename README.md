@@ -3,7 +3,7 @@ Clone of SoundCloud
 
 <h2> Database Schema Design </h2>
 
-<img><img>
+<img src="imgs/Screen Shot 2022-07-28 at 12.39.27 PM.png" alt='image of database schema'>
 
 <h2> API Documentation</h2>
 
