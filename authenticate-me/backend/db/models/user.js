@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: {
         len: [4, 30],
-        isEmail: false
+        isNotEmail(value) {
+          if (Validator.isEmail(value)) {
+            throw new Error("Cannot be an email.");
+          }
+        }
       }
     },
     email: {
