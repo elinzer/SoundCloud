@@ -4,7 +4,7 @@
 
 ![soundcloud-database-schema]
 
-<img src='imgs/airbnb_dbdiagram.png'>
+<img src='imgs/soundcloud_dbdiagram.png'>
 
 ## API Documentation
 
