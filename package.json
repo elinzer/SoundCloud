@@ -8,8 +8,7 @@
     "dev:backend": "npm install --prefix backend start",
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm start --prefix backend"
   },
   "keywords": [],
   "author": "",
