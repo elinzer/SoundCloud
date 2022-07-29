@@ -4,8 +4,7 @@
 
 ![soundcloud-database-schema]
 
-[soundcloud-database-schema]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-12/soundcloud-db-schema.png
-[soundcloud-db-diagram-info]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-12/soundcloud-db-diagram-info.txt
+<img src='imgs/airbnb_dbdiagram.png'>
 
 ## API Documentation
 
