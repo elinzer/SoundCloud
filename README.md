@@ -2,7 +2,6 @@
 
 ## Database Schema Design
 
-![soundcloud-database-schema]
 
 <img src='imgs/soundcloud_dbdiagram.png'>
 
