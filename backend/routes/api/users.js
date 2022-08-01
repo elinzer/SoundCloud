@@ -11,18 +11,18 @@ const router = express.Router();
 
 //checks that signup is valid
 const validateSignup = [
-  check('email')
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
-  check('username')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
-  check('username')
-    .not()
-    .isEmail()
-    .withMessage('Username cannot be an email.'),
+  // check('email')
+  //   .exists({ checkFalsy: true })
+  //   .isEmail()
+  //   .withMessage('Please provide a valid email.'),
+  // check('username')
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 4 })
+  //   .withMessage('Please provide a username with at least 4 characters.'),
+  // check('username')
+  //   .not()
+  //   .isEmail()
+  //   .withMessage('Username cannot be an email.'),
   check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -61,7 +61,7 @@ router.post('/', validateSignup, async (req, res) => {
           }
         }
       )
-    } else if (firstName === '' || lastName === '' || !username || !email) {
+    } else if (email.includes('@') !== true || firstName === '' || lastName === '' || username === '' || email === '') {
     res.statusCode = 400;
     res.json({
       "message": "Validation error",
@@ -80,7 +80,7 @@ router.post('/', validateSignup, async (req, res) => {
 
     return res.json({
       "id": user.id,
-      "firsName": firstName,
+      "firstName": firstName,
       "lastName": lastName,
       "username": username,
       "email": email,
