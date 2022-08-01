@@ -33,20 +33,58 @@ const validateSignup = [
 
 // Sign up
 router.post('/', validateSignup, async (req, res) => {
-  const { firstName, lastName, email, password, username } = req.body;
+  const { firstName, lastName, email, password, username, token } = req.body;
 
-  if (firstName === '' || lastName === '') {
+    const existingUserName = await User.findOne({ where: { username: username }})
+
+    const existingEmail = await User.findOne({ where: { email: email }})
+
+    if (existingEmail) {
+      res.statusCode = 403
+      res.json(
+        {
+          "message": "User already exists",
+          "statusCode": 403,
+          "errors": {
+            "email": "User with that email already exists"
+          }
+        }
+      )
+    } else if (existingUserName) {
+      res.statusCode = 403;
+      res.json(
+        {
+          "message": "User already exists",
+          "statusCode": 403,
+          "errors": {
+            "email": "User with that username already exists"
+          }
+        }
+      )
+    } else if (firstName === '' || lastName === '' || !username || !email) {
     res.statusCode = 400;
     res.json({
-      message: `First/Last name cannot be blank`
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "email": "Invalid email",
+        "username": "Username is required",
+        "firstName": "First Name is required",
+        "lastName": "Last Name is required"
+      }
     })
   } else {
-    const user = await User.signup({ firstName, lastName, email, username, password });
+    const user = await User.signup({ firstName, lastName, email, username, password});
 
     await setTokenCookie(res, user);
 
     return res.json({
-      user
+      "id": user.id,
+      "firsName": firstName,
+      "lastName": lastName,
+      "username": username,
+      "email": email,
+      "token": setTokenCookie(res, user)
     });
   }
 
