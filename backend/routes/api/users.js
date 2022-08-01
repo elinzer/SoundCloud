@@ -5,6 +5,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { Op } = require("sequelize")
 
 const router = express.Router();
 
@@ -32,18 +33,25 @@ const validateSignup = [
 
 // Sign up
 router.post('/', validateSignup, async (req, res) => {
-      const { email, password, username } = req.body;
-      const user = await User.signup({ email, username, password });
+  const { firstName, lastName, email, password, username } = req.body;
 
-      await setTokenCookie(res, user);
+  if (firstName === '' || lastName === '') {
+    res.statusCode = 400;
+    res.json({
+      message: `First/Last name cannot be blank`
+    })
+  } else {
+    const user = await User.signup({ firstName, lastName, email, username, password });
 
-      return res.json({
-        user
-      });
-    }
-  );
+    await setTokenCookie(res, user);
 
+    return res.json({
+      user
+    });
+  }
 
+}
+);
 
 
 module.exports = router;
