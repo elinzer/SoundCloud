@@ -106,6 +106,7 @@ router.put('/:songId', requireAuth, async (req, res) => {
 
 })
 
+//delete song
 router.delete('/:songId', requireAuth, async (req, res) => {
     const currentUserId = req.user.id;
     const id = req.params.songId
