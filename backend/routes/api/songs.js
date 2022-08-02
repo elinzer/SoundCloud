@@ -64,11 +64,9 @@ router.get('/', async (req, res) => {
 
 //edit a song
 router.put('/:songId', requireAuth, async (req, res) => {
-    const {userId, albumId, title, description, url, createdAt, updatedAt, imgUrl} = req.body;
+    const { userId, albumId, title, description, url, createdAt, updatedAt, imgUrl } = req.body;
 
     const user = req.user.id;
-
-    console.log(user)
 
     const song = await Song.findByPk(req.params.songId);
 
@@ -77,17 +75,17 @@ router.put('/:songId', requireAuth, async (req, res) => {
         res.json({
             "message": "Song couldn't be found",
             "statusCode": 404
-          })
+        })
     } else if (!title || !url || title === '' || url === '') {
         res.statusCode = 400;
         res.json({
             "message": "Validation Error",
             "statusCode": 400,
             "errors": {
-              "title": "Song title is required",
-              "url": "Audio is required"
+                "title": "Song title is required",
+                "url": "Audio is required"
             }
-          })
+        })
     } else if (user !== song.userId) {
         res.statusCode = 403;
         res.json({
@@ -106,13 +104,33 @@ router.put('/:songId', requireAuth, async (req, res) => {
         res.json(song)
     }
 
-
 })
 
+router.delete('/:songId', requireAuth, async (req, res) => {
+    const currentUserId = req.user.id;
 
+    const songToDelete = await Song.findByPk(req.params.songId);
 
-
-
+    if (!songToDelete) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Song couldn't be found",
+            "statusCode": 404
+        })
+    } else if (currentUserId !== songToDelete.userId) {
+        res.statusCode = 403;
+        res.json({
+            "message": `This is not your song to delete!`,
+            "statusCode": 403
+        })
+    } else {
+       await songToDelete.destroy();
+       res.json({
+        "message": "Successfully deleted",
+        "statusCode": 200
+      })
+    }
+})
 
 
 
