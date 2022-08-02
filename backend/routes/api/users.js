@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Song } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Op } = require("sequelize")
@@ -90,6 +90,29 @@ router.post('/', validateSignup, async (req, res) => {
 
 }
 );
+
+//get songs of a user by user id
+router.get('/:userId/songs', async (req, res) => {
+  const userId = req.params.userId;
+
+  const user = await User.findByPk(userId);
+
+  if (user) {
+    const userSongs = await user.getSongs();
+    res.json({
+      "Songs": userSongs
+    })
+  } else if (!user) {
+    res.statusCode = 404;
+    res.json({
+      "message": "Artist couldn't be found",
+      "statusCode": 404
+    })
+  }
+})
+
+
+
 
 
 module.exports = router;
