@@ -5,23 +5,24 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { Op } = require("sequelize")
 
 const router = express.Router();
 
 //checks that signup is valid
 const validateSignup = [
-  check('email')
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
-  check('username')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
-  check('username')
-    .not()
-    .isEmail()
-    .withMessage('Username cannot be an email.'),
+  // check('email')
+  //   .exists({ checkFalsy: true })
+  //   .isEmail()
+  //   .withMessage('Please provide a valid email.'),
+  // check('username')
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 4 })
+  //   .withMessage('Please provide a username with at least 4 characters.'),
+  // check('username')
+  //   .not()
+  //   .isEmail()
+  //   .withMessage('Username cannot be an email.'),
   check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -32,18 +33,63 @@ const validateSignup = [
 
 // Sign up
 router.post('/', validateSignup, async (req, res) => {
-      const { email, password, username } = req.body;
-      const user = await User.signup({ email, username, password });
+  const { firstName, lastName, email, password, username, token } = req.body;
 
-      await setTokenCookie(res, user);
+    const existingUserName = await User.findOne({ where: { username: username }})
 
-      return res.json({
-        user
-      });
-    }
-  );
+    const existingEmail = await User.findOne({ where: { email: email }})
 
+    if (existingEmail) {
+      res.statusCode = 403
+      res.json(
+        {
+          "message": "User already exists",
+          "statusCode": 403,
+          "errors": {
+            "email": "User with that email already exists"
+          }
+        }
+      )
+    } else if (existingUserName) {
+      res.statusCode = 403;
+      res.json(
+        {
+          "message": "User already exists",
+          "statusCode": 403,
+          "errors": {
+            "email": "User with that username already exists"
+          }
+        }
+      )
+    } else if (email.includes('@') !== true || firstName === '' || lastName === '' || username === '' || email === '') {
+    res.statusCode = 400;
+    res.json({
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "email": "Invalid email",
+        "username": "Username is required",
+        "firstName": "First Name is required",
+        "lastName": "Last Name is required"
+      }
+    })
+  } else {
+    const user = await User.signup({ firstName, lastName, email, username, password});
 
+    await setTokenCookie(res, user);
+
+    return res.json({
+      "id": user.id,
+      "firstName": firstName,
+      "lastName": lastName,
+      "username": username,
+      "email": email,
+      "token": setTokenCookie(res, user)
+    });
+  }
+
+}
+);
 
 
 module.exports = router;

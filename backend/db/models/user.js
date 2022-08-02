@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
 
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id, firstName, lastName, username, email } = this; // context will be the User instance
+      return { id, firstName, lastName, username, email };
     }
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -32,9 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    static async signup({ username, email, password }) {
+    static async signup({ firstName, lastName, username, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
+        firstName,
+        lastName,
         username,
         email,
         hashedPassword
@@ -44,10 +46,38 @@ module.exports = (sequelize, DataTypes) => {
 
 
     static associate(models) {
-      // define association here
+      User.hasMany(models.Playlist, {
+        foreignKey: 'userId' })
+      User.hasMany(models.Album, {
+        foreignKey: 'userId'
+      })
+      User.hasMany(models.Comment, {
+        foreignKey: 'userId'
+      })
+      User.hasMany(models.Song, {
+        foreignKey: 'userId'
+      })
     }
   }
   User.init({
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isAlpha: true,
+        len: [1, 50]
+      }
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isAlpha: true,
+        len: [1, 50]
+      }
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -86,7 +116,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ['hashedPassword'] }
+        attributes: { exclude: ['hashedPassword', 'createdAt', 'updatedAt'] }
       },
       loginUser: {
         attributes: {}
