@@ -108,8 +108,9 @@ router.put('/:songId', requireAuth, async (req, res) => {
 
 router.delete('/:songId', requireAuth, async (req, res) => {
     const currentUserId = req.user.id;
+    const id = req.params.songId
 
-    const songToDelete = await Song.findByPk(req.params.songId);
+    const songToDelete = await Song.findOne({ where: { id: id } });
 
     if (!songToDelete) {
         res.statusCode = 404;
@@ -124,11 +125,11 @@ router.delete('/:songId', requireAuth, async (req, res) => {
             "statusCode": 403
         })
     } else {
-       await songToDelete.destroy();
-       res.json({
-        "message": "Successfully deleted",
-        "statusCode": 200
-      })
+        await songToDelete.destroy();
+        res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+        })
     }
 })
 
