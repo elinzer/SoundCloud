@@ -11,24 +11,21 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('Albums', [
+   await queryInterface.bulkInsert('Playlists', [
     {
-      userId: 1,
-      title: 'First Album',
-      description: 'Debut Album',
-      imgUrl: 'www.goodImages.com'
+      userId: 3,
+      name: 'my love songs',
+      imgUrl: 'www.goodImage.com'
     },
     {
       userId: 2,
-      title: '2nd Album',
-      description: 'Soph Album',
-      imgUrl: 'www.goodImages.com'
+      name: 'my breakup songs',
+      imgUrl: 'www.goodImage.com'
     },
     {
-      userId: 3,
-      title: '3rd Album',
-      description: 'Trilogy Album',
-      imgUrl: 'www.goodImages.com'
+      userId: 1,
+      name: 'my rock songs',
+      imgUrl: 'www.goodImage.com'
     }
    ])
   },
@@ -40,10 +37,8 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Albums',
-      {
-        imgUrl: ['www.goodImages.com']
-      }
-    )
+    await queryInterface.bulkDelete('Playlists', {
+      imgUrl: ['www.goodImage.com']
+    })
   }
 };
