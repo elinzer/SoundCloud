@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     albumId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    url: DataTypes.STRING
+    url: DataTypes.STRING,
+    imgUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Song',
