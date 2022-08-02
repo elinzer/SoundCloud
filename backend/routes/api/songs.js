@@ -9,11 +9,28 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 
+//get all songs by current user
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
+    const {user} = req;
 
+    if (user) {
+        const userSongs = await Song.findAll({
+            where: {
+                userId: user.id
+            }
+        })
+
+        res.json({
+            "Songs": userSongs
+        })
+    }
+
+
+})
 
 
 //get all songs
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     const songs = await Song.findAll();
 
     res.json({
