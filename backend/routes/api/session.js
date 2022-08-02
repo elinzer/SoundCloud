@@ -26,14 +26,14 @@ router.get('/', restoreUser, (req, res) => {
 
 
 const validateLogin = [
-  check('credential')
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
-  handleValidationErrors
+  // check('credential')
+  //   .exists({ checkFalsy: true })
+  //   .notEmpty()
+  //   .withMessage('Please provide a valid email or username.'),
+  // check('password')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please provide a password.'),
+  // handleValidationErrors
 ];
 
 
@@ -43,19 +43,41 @@ router.post('/', validateLogin, async (req, res, next) => {
 
   const user = await User.login({ credential, password });
 
-  if (!user) {
+  if (credential === '' || password === '') {
+    res.statusCode = 400;
+    res.json({
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "credential": "Email or username is required",
+        "password": "Password is required"
+      }
+    })
+  } else if (!user) {
     const err = new Error('Login failed');
-    err.status = 401;
-    err.title = 'Login failed';
-    err.errors = ['The provided credentials were invalid.'];
-    return next(err);
+    err.message = 'Invalid credentials'
+    err.statusCode = 401;
+    // err.title = 'Login failed';
+    // err.errors = ['The provided credentials were invalid.'];
+    res.statusCode = 401;
+    res.json({
+      "message": "Invalid credentials",
+      "statusCode": 401
+    });
+  } else {
+
+   const token = await setTokenCookie(res, user);
+
+    return res.json({
+      "id": user.id,
+      "firstName": user.firstName,
+      "lastname": user.lastName,
+      "username": user.username,
+      "email": user.email,
+      "token": token
+    });
   }
 
-  await setTokenCookie(res, user);
-
-  return res.json({
-    user
-  });
 }
 );
 
