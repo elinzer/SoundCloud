@@ -61,7 +61,7 @@ router.post('/', validateSignup, async (req, res) => {
           }
         }
       )
-    } else if (email.includes('@') !== true || firstName === '' || lastName === '' || username === '' || email === '') {
+    } else if (email.includes('@') !== true || firstName === '' || lastName === '' || username === '' || email === ''|| !firstName || !lastName) {
     res.statusCode = 400;
     res.json({
       "message": "Validation error",

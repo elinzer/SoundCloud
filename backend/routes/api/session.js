@@ -41,9 +41,10 @@ const validateLogin = [
 router.post('/', validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
+
   const user = await User.login({ credential, password });
 
-  if (credential === '' || password === '') {
+  if (credential === '' || password === '' || !credential || !password) {
     res.statusCode = 400;
     res.json({
       "message": "Validation error",
@@ -65,8 +66,7 @@ router.post('/', validateLogin, async (req, res, next) => {
       "statusCode": 401
     });
   } else {
-
-   const token = await setTokenCookie(res, user);
+    const token = await setTokenCookie(res, user);
 
     return res.json({
       "id": user.id,
