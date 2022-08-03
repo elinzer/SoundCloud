@@ -48,7 +48,35 @@ router.put('/:commentId', requireAuth, async (req, res) => {
 
 })
 
+//delete comment
+router.delete('/:commentId', requireAuth, async (req, res) => {
+    const commentId = req.params.commentId;
+    const userId = req.user.id;
 
+    const commentToDelete = await Comment.findByPk(commentId);
+
+    if (!commentToDelete) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Comment couldn't be found",
+            "statusCode": 404
+          })
+    } else if (userId !== commentToDelete.userId) {
+        res.statusCode = 403;
+        res.json({
+            "message": "This is not your comment to delete",
+            "statusCode": 403
+        })
+    } else {
+        await commentToDelete.destroy();
+        res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+          })
+    }
+
+
+})
 
 
 
