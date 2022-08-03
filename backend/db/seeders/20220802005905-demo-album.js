@@ -16,19 +16,19 @@ module.exports = {
       userId: 1,
       title: 'First Album',
       description: 'Debut Album',
-      imgUrl: 'www.goodImages.com'
+      imageUrl: 'www.goodImages.com'
     },
     {
       userId: 2,
       title: '2nd Album',
       description: 'Soph Album',
-      imgUrl: 'www.goodImages.com'
+      imageUrl: 'www.goodImages.com'
     },
     {
       userId: 3,
       title: '3rd Album',
       description: 'Trilogy Album',
-      imgUrl: 'www.goodImages.com'
+      imageUrl: 'www.goodImages.com'
     }
    ])
   },
@@ -42,7 +42,7 @@ module.exports = {
      */
     await queryInterface.bulkDelete('Albums',
       {
-        imgUrl: ['www.goodImages.com']
+        imageUrl: ['www.goodImages.com']
       }
     )
   }

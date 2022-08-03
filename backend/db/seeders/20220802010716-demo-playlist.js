@@ -15,17 +15,17 @@ module.exports = {
     {
       userId: 3,
       name: 'my love songs',
-      imgUrl: 'www.goodImage.com'
+      imageUrl: 'www.goodImage.com'
     },
     {
       userId: 2,
       name: 'my breakup songs',
-      imgUrl: 'www.goodImage.com'
+      imageUrl: 'www.goodImage.com'
     },
     {
       userId: 1,
       name: 'my rock songs',
-      imgUrl: 'www.goodImage.com'
+      imageUrl: 'www.goodImage.com'
     }
    ])
   },
@@ -38,7 +38,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     await queryInterface.bulkDelete('Playlists', {
-      imgUrl: ['www.goodImage.com']
+      imageUrl: ['www.goodImage.com']
     })
   }
 };

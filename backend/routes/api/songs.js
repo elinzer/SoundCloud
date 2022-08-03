@@ -38,7 +38,7 @@ router.get('/:songId', async (req, res) => {
             { model: User },
             {
                 model: Album,
-                attributes: ['id', 'title', 'imgUrl']
+                attributes: ['id', 'title', 'imageUrl']
             }]
     })
     if (song) {
@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
 
 //edit a song
 router.put('/:songId', requireAuth, async (req, res) => {
-    const { userId, albumId, title, description, url, createdAt, updatedAt, imgUrl } = req.body;
+    const { userId, albumId, title, description, url, createdAt, updatedAt, imageUrl } = req.body;
 
     const user = req.user.id;
 
@@ -97,7 +97,7 @@ router.put('/:songId', requireAuth, async (req, res) => {
             title: title,
             description: description,
             url: url,
-            imgUrl: imgUrl
+            imageUrl: imageUrl
         })
         await song.save();
 

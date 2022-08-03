@@ -18,7 +18,7 @@ module.exports = {
       title: "Best Song Ever",
       description: 'Smash hit',
       url: 'www.goodsongs.com',
-      imgUrl: "www.goodImage.com"
+      imageUrl: "www.goodImage.com"
     },
     {
       userId: 2,
@@ -26,7 +26,7 @@ module.exports = {
       title: "Another Banger",
       description: 'on repeat',
       url: 'www.goodsongs.com',
-      imgUrl: "www.goodImage.com"
+      imageUrl: "www.goodImage.com"
     },
     {
       userId: 3,
@@ -34,7 +34,7 @@ module.exports = {
       title: "Party Anthem",
       description: 'fire song',
       url: 'www.goodsongs.com',
-      imgUrl: "www.goodImage.com"
+      imageUrl: "www.goodImage.com"
     }
 
   ])

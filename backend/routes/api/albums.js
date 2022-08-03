@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 router.post('/:albumId/songs', requireAuth, async (req, res) => {
     const userId = req.user.id;
     const albumId = req.params.albumId;
-    const { title, description, url, imgUrl } = req.body;
+    const { title, description, url, imageUrl } = req.body;
 
     const album = await Album.findByPk(albumId);
 
@@ -69,7 +69,7 @@ router.post('/:albumId/songs', requireAuth, async (req, res) => {
             title: title,
             description: description,
             url: url,
-            imgUrl: imgUrl,
+            imageUrl: imageUrl,
             albumId: albumId
         })
 
