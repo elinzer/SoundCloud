@@ -106,6 +106,53 @@ router.put('/:songId', requireAuth, async (req, res) => {
 
 })
 
+//create a song
+router.post('/', requireAuth, async (req, res) => {
+    const userId = req.user.id;
+    // const albumId = req.params.albumId;
+    const { albumId, title, description, url, imageUrl } = req.body;
+
+    const album = await Album.findByPk(albumId);
+
+    if (!title || !url || title === '' || url === '') {
+        res.statusCode = 400;
+        res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+                "title": "Song title is required",
+                "url": "Audio is required"
+            }
+        })
+    } else if (album === undefined) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Album couldn't be found",
+            "statusCode": 404
+        })
+    } else if (album && userId !== album.userId) {
+        res.statusCode = 403;
+        res.json({
+            "message": "This is not your album to edit!",
+            "statusCode": 403
+        })
+    } else {
+
+        const newSong = await Song.create({
+            userId: userId,
+            title: title,
+            description: description,
+            url: url,
+            imageUrl: imageUrl,
+            albumId: albumId
+        })
+        res.statusCode = 201;
+        res.json(newSong)
+    }
+
+})
+
+
 //delete song
 router.delete('/:songId', requireAuth, async (req, res) => {
     const currentUserId = req.user.id;
