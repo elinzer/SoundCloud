@@ -4,6 +4,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const songsRouter = require('./songs.js');
 const albumsRouter = require('./albums.js');
+const commentsRouter = require('./comments');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
 
@@ -21,6 +22,8 @@ router.use('/artists', usersRouter);
 router.use('/songs', songsRouter);
 
 router.use('/albums', albumsRouter);
+
+router.use('/comments', commentsRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
