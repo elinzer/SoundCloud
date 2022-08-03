@@ -40,7 +40,7 @@ router.get('/:songId/comments', async (req, res) => {
         res.json({
             "message": "Song couldn't be found",
             "statusCode": 404
-          })
+        })
     } else {
         const comments = await Comment.findAll({
             include: [{ model: User, attributes: ['id', 'username'] }],
@@ -137,8 +137,36 @@ router.put('/:songId', requireAuth, async (req, res) => {
 //create a comment for song based on song id
 router.post('/:songId/comments', requireAuth, async (req, res) => {
     const songId = req.params.songId;
+    const userId = req.user.id;
 
-    
+    const { body } = req.body;
+
+    const song = await Song.findByPk(songId);
+
+    if (!song) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Song couldn't be found",
+            "statusCode": 404
+        })
+    } else if (!body || body === '') {
+        res.statusCode = 400;
+        res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+              "body": "Comment body text is required"
+            }
+          })
+    } else {
+        const newComment = await Comment.create({
+            userId: userId,
+            songId: song.id,
+            body: body
+        })
+
+        res.json(newComment)
+    }
 
 })
 
