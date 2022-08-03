@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Op } = require("sequelize")
@@ -35,33 +35,33 @@ const validateSignup = [
 router.post('/', validateSignup, async (req, res) => {
   const { firstName, lastName, email, password, username, token } = req.body;
 
-    const existingUserName = await User.findOne({ where: { username: username }})
+  const existingUserName = await User.findOne({ where: { username: username } })
 
-    const existingEmail = await User.findOne({ where: { email: email }})
+  const existingEmail = await User.findOne({ where: { email: email } })
 
-    if (existingEmail) {
-      res.statusCode = 403
-      res.json(
-        {
-          "message": "User already exists",
-          "statusCode": 403,
-          "errors": {
-            "email": "User with that email already exists"
-          }
+  if (existingEmail) {
+    res.statusCode = 403
+    res.json(
+      {
+        "message": "User already exists",
+        "statusCode": 403,
+        "errors": {
+          "email": "User with that email already exists"
         }
-      )
-    } else if (existingUserName) {
-      res.statusCode = 403;
-      res.json(
-        {
-          "message": "User already exists",
-          "statusCode": 403,
-          "errors": {
-            "email": "User with that username already exists"
-          }
+      }
+    )
+  } else if (existingUserName) {
+    res.statusCode = 403;
+    res.json(
+      {
+        "message": "User already exists",
+        "statusCode": 403,
+        "errors": {
+          "email": "User with that username already exists"
         }
-      )
-    } else if (email.includes('@') !== true || firstName === '' || lastName === '' || username === '' || email === ''|| !firstName || !lastName) {
+      }
+    )
+  } else if (email.includes('@') !== true || firstName === '' || lastName === '' || username === '' || email === '' || !firstName || !lastName) {
     res.statusCode = 400;
     res.json({
       "message": "Validation error",
@@ -74,7 +74,7 @@ router.post('/', validateSignup, async (req, res) => {
       }
     })
   } else {
-    const user = await User.signup({ firstName, lastName, email, username, password});
+    const user = await User.signup({ firstName, lastName, email, username, password });
 
     await setTokenCookie(res, user);
 
@@ -111,7 +111,32 @@ router.get('/:userId/songs', async (req, res) => {
   }
 })
 
+//get user/artist details from id
+router.get('/:userId', async (req, res) => {
+  const userId = req.params.userId;
 
+  const user = await User.findByPk(userId);
+
+  if (!user) {
+    res.statusCode = 404;
+    res.json({
+      "message": "Artist couldn't be found",
+      "statusCode": 404
+    })
+  } else {
+
+    const userAlbums = await Album.count({ where: { userId: userId } });
+    const userSongs = await Song.count({ where: { userId: userId } });
+
+    res.json({
+      "id": userId,
+      "username": user.username,
+      "totalSongs": userSongs,
+      "totalAlbums": userAlbums
+    })
+  }
+
+})
 
 
 
