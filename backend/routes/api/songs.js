@@ -89,18 +89,19 @@ router.get('/', async (req, res) => {
     page = parseInt(page);
     size = parseInt(size);
 
-    if (Number.isNaN(page)) page = 0;
+    if (Number.isNaN(page)) page = 1;
     if (Number.isNaN(size)) size = 20;
 
+
     let pagination = {};
-    if (page > 10 || size > 20 || page < 0 || size < 0) {
+    if (page > 10 || size > 20 || page <= 0 || size <= 0) {
         res.statusCode = 400;
         res.json({
             "message": "Validation Error",
             "statusCode": 400,
             "errors": {
-              "page": "Page must be greater than or equal to 0 and less than or equal to 10",
-              "size": "Size must be greater than or equal to 0 and less than or equal to 20",
+              "page": "Page must be greater than or equal to 1 and less than or equal to 10",
+              "size": "Size must be greater than or equal to 1 and less than or equal to 20",
               "createdAt": "CreatedAt is invalid"
             }
           })
