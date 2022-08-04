@@ -8,6 +8,33 @@ const { Op } = require("sequelize")
 
 const router = express.Router();
 
+//get playlist deets w/id
+router.get('/:playlistId', async (req, res) => {
+    const playlistId = req.params.playlistId;
+
+    const playlist = await Playlist.findByPk(playlistId, {
+            include: {
+                model: Song,
+                through: {
+                    attributes: []
+                },
+                attributes: ['id', 'userId', "albumId", "title", "url", "imageUrl", "createdAt", "updatedAt"]
+            }
+    });
+
+
+    if (!playlist) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Playlist couldn't be found",
+            "statusCode": 404
+        })
+    } else {
+
+        res.json(playlist)
+    }
+})
+
 
 //add a song to a playlist by playlist id
 router.post('/:playlistId/songs', requireAuth, async (req, res) => {
@@ -23,14 +50,14 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
         res.json({
             "message": "Playlist couldn't be found",
             "statusCode": 404
-          })
+        })
 
     } else if (!song) {
         res.statusCode = 404;
         res.json({
             "message": "Song couldn't be found",
             "statusCode": 404
-          })
+        })
     } else if (userId !== playlist.userId) {
         res.statusCode = 403;
         res.json({
