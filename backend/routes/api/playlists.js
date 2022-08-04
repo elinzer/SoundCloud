@@ -8,18 +8,33 @@ const { Op } = require("sequelize")
 
 const router = express.Router();
 
+//get playlists of current user
+router.get('/current', requireAuth, async (req, res) => {
+    const userId = req.user.id;
+
+    const playlists = await Playlist.findAll({
+        where: {
+            userId: userId
+        }
+    })
+    res.json({
+        "Playlists": playlists
+    })
+})
+
+
 //get playlist deets w/id
 router.get('/:playlistId', async (req, res) => {
     const playlistId = req.params.playlistId;
 
     const playlist = await Playlist.findByPk(playlistId, {
-            include: {
-                model: Song,
-                through: {
-                    attributes: []
-                },
-                attributes: ['id', 'userId', "albumId", "title", "url", "imageUrl", "createdAt", "updatedAt"]
-            }
+        include: {
+            model: Song,
+            through: {
+                attributes: []
+            },
+            attributes: ['id', 'userId', "albumId", "title", "url", "imageUrl", "createdAt", "updatedAt"]
+        }
     });
 
 
@@ -110,8 +125,75 @@ router.post('/', requireAuth, async (req, res) => {
 
 })
 
+//edit a playlist
+router.put('/:playlistId', requireAuth, async (req, res) => {
+    const playlistId = req.params.playlistId;
+    const userId = req.user.id;
+    const { name, imageUrl } = req.body;
+
+    const playlistToEdit = await Playlist.findByPk(playlistId);
+
+    if (!name || name === '') {
+        res.statusCode = 400;
+        res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+              "name": "Playlist name is required"
+            }
+          })
+    } else if (!playlistToEdit) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Playlist couldn't be found",
+            "statusCode": 404
+          })
+    } else if (userId !== playlistToEdit.userId) {
+        res.statusCode = 403;
+        res.json({
+            "message": "This is not your playlist to edit!",
+            "statusCode": 403
+        })
+    } else {
+        playlistToEdit.set({
+            name: name,
+            imageUrl: imageUrl
+        })
+        await playlistToEdit.save();
+        res.json(playlistToEdit)
+    }
+
+})
 
 
+//delete a playlist
+router.delete('/:playlistId', requireAuth, async (req, res) => {
+    const playlistId = req.params.playlistId;
+    const userId = req.user.id;
+
+    const playlistToDelete = await Playlist.findByPk(playlistId);
+
+    if (!playlistToDelete) {
+        res.statusCode = 404;
+        res.json({
+            "message": "Playlist couldn't be found",
+            "statusCode": 404
+          })
+    } else if (userId !== playlistToDelete.userId) {
+        res.statusCode = 403;
+        res.json({
+            "message": "This is not your playlist to delete!",
+            "statusCode": 403
+        })
+    } else {
+        await playlistToDelete.destroy();
+        res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+          })
+    }
+
+})
 
 
 
