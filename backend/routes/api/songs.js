@@ -83,11 +83,40 @@ router.get('/:songId', async (req, res) => {
 
 //get all songs
 router.get('/', async (req, res) => {
-    const songs = await Song.findAll();
 
-    res.json({
-        "Songs": songs
-    })
+    let { page, size } = req.query;
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    if (Number.isNaN(page)) page = 0;
+    if (Number.isNaN(size)) size = 20;
+
+    let pagination = {};
+    if (page > 10 || size > 20 || page < 0 || size < 0) {
+        res.statusCode = 400;
+        res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+              "page": "Page must be greater than or equal to 0 and less than or equal to 10",
+              "size": "Size must be greater than or equal to 0 and less than or equal to 20",
+              "createdAt": "CreatedAt is invalid"
+            }
+          })
+    } else if (page >= 1 && size >= 1 && page <= 10 && size <= 20) {
+        pagination.limit = size;
+        pagination.offset = size * (page - 1);
+
+        const songs = await Song.findAll({ ...pagination });
+
+        res.json({
+            "Songs": songs,
+            page,
+            size
+        })
+    }
+
 })
 
 //edit a song
@@ -155,9 +184,9 @@ router.post('/:songId/comments', requireAuth, async (req, res) => {
             "message": "Validation error",
             "statusCode": 400,
             "errors": {
-              "body": "Comment body text is required"
+                "body": "Comment body text is required"
             }
-          })
+        })
     } else {
         const newComment = await Comment.create({
             userId: userId,
