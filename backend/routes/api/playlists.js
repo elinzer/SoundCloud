@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Song, Album, Playlist } = require('../../db/models');
+const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Op } = require("sequelize")
@@ -31,8 +31,23 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
             "message": "Song couldn't be found",
             "statusCode": 404
           })
+    } else if (userId !== playlist.userId) {
+        res.statusCode = 403;
+        res.json({
+            "message": "This is not your playlist to edit!",
+            "statusCode": 403
+        })
     } else {
-        
+        const newPlaylistSong = await PlaylistSong.create({
+            playlistId: playlistId,
+            songId: songId
+        })
+
+        res.json({
+            "id": newPlaylistSong.id,
+            "playlistId": newPlaylistSong.playlistId,
+            "songId": newPlaylistSong.songId
+        })
     }
 
 
