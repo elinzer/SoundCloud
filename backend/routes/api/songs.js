@@ -84,7 +84,7 @@ router.get('/:songId', async (req, res) => {
 //get all songs
 router.get('/', async (req, res) => {
 
-    let { page, size } = req.query;
+    let { page, size, title } = req.query;
 
     page = parseInt(page);
     size = parseInt(size);
@@ -92,6 +92,8 @@ router.get('/', async (req, res) => {
     if (Number.isNaN(page)) page = 1;
     if (Number.isNaN(size)) size = 20;
 
+    let where = {};
+    if (title) where.title = title;
 
     let pagination = {};
     if (page > 10 || size > 20 || page <= 0 || size <= 0) {
@@ -109,7 +111,7 @@ router.get('/', async (req, res) => {
         pagination.limit = size;
         pagination.offset = size * (page - 1);
 
-        const songs = await Song.findAll({ ...pagination });
+        const songs = await Song.findAll({ where,...pagination });
 
         res.json({
             "Songs": songs,
