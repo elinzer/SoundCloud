@@ -85,9 +85,8 @@ router.post('/:playlistId/songs', requireAuth, async (req, res) => {
             songId: songId
         })
 
-        console.log(newPlaylistSong)
         res.json({
-            "id": newPlaylistSong.uniqno,
+            "id": userId,
             "playlistId": newPlaylistSong.playlistId,
             "songId": newPlaylistSong.songId
         })
