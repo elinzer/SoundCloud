@@ -20,7 +20,7 @@ router.get('/', restoreUser, (req, res) => {
       "email": user.email,
       "username": user.username
     });
-  } else return res.json({});
+  } else return res.json(null);
 }
 );
 
