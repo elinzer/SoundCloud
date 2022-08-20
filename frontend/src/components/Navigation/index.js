@@ -7,8 +7,8 @@ import './Navigation.css';
 
 
 
-const Navigation = ({isLoaded}) => {
-    const sessionUser = useSelector(state => state.session.user);
+const Navigation = ({ isLoaded }) => {
+  const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
@@ -19,18 +19,26 @@ const Navigation = ({isLoaded}) => {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/signup">
+          <button className='create-acct-button'>
+            Create account
+          </button>
+        </NavLink>
       </>
     );
   }
-    return (
-        <ul>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
-    )
+  return (
+    <ul>
+      <li>
+        <NavLink exact to="/">
+            <span className='home-icon'>
+              NotSoundCloud
+              </span>
+        </NavLink>
+        {isLoaded && sessionLinks}
+      </li>
+    </ul>
+  )
 }
 
 export default Navigation;

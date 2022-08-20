@@ -1,3 +1,32 @@
 ul {
-    border: 1px solid red;
+    border: 1px solid black;
+    background-color: gray;
+    list-style: none;
+}
+
+.create-acct-button {
+    padding: 2px 16px;
+    background-color: #f50;
+    border-color: #f50;
+    color: #fff;
+    border-radius: 3px;
+    height: 30px;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.sign-in-button {
+    padding: 2px 15px;
+    height: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 24px;
+    background: transparent;
+    color: #fff;
+    border-color: #ccc;
+}
+
+.home-icon {
+    left: 1px;
 }
