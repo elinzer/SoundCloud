@@ -11,6 +11,7 @@ import './Navigation.css';
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
 
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -22,7 +23,6 @@ const Navigation = ({ isLoaded }) => {
       <div className='right-side-nav-buttons'>
         <LoginFormModal />
         <SignupFormModal />
-
       </div>
       </>
     );
