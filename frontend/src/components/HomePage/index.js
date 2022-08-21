@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-
+import bgImage from '../../images/people-at-concert-1105666.jpg'
+import './HomePage.css'
 
 const HomePage = () => {
 
@@ -15,7 +16,7 @@ const HomePage = () => {
     } else {
         sessionHomePage = (
             <div>
-                Hello from not logged in home page
+                <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
             </div>
         )
     }

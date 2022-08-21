@@ -1,0 +1,7 @@
+.splash-page-bg {
+    z-index: 0;
+    top: 0;
+    position: absolute;
+    width: 99%;
+    height: auto;
+}

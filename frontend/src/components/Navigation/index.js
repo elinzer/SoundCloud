@@ -30,9 +30,9 @@ const Navigation = ({ isLoaded }) => {
   return (
     <div className='nav-bar'>
       <NavLink exact to="/">
-          <div className='home-icon'>
+          <button className='home-icon'>
             NotSoundCloud
-            </div>
+            </button>
       </NavLink>
       {isLoaded && sessionLinks}
     </div>

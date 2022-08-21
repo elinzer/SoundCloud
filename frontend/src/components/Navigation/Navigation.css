@@ -1,10 +1,14 @@
 .nav-bar {
-    background-color: gray;
-    list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    z-index: 1;
+    position: relative;
+    background-color: #333;
+    height: 46px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 0;
+    align-items: center;
 }
 
 .create-acct-button {
@@ -32,4 +36,11 @@
 
 .home-icon {
     left: 1px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
 }
