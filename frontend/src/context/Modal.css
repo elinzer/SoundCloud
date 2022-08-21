@@ -7,6 +7,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 450px;
+    left: 429px;
   }
 
   #modal-background {

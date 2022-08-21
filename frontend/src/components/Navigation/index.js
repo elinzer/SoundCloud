@@ -19,22 +19,24 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
+      <div className='right-side-nav-buttons'>
         <LoginFormModal />
         <SignupFormModal />
+
+      </div>
       </>
     );
   }
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">
-            <span className='home-icon'>
-              NotSoundCloud
-              </span>
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='nav-bar'>
+      <NavLink exact to="/">
+          <div className='home-icon'>
+            NotSoundCloud
+            </div>
+      </NavLink>
+      {isLoaded && sessionLinks}
+    </div>
+
   )
 }
 
