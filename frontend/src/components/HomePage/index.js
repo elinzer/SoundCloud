@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import DisplayAllSongs from "./SongDisplay";
 import bgImage from '../../images/people-at-concert-1105666.jpg'
 import './HomePage.css'
 
@@ -10,7 +11,12 @@ const HomePage = () => {
     if (sessionUser) {
         sessionHomePage = (
             <div>
-                Hello from logged in user home page
+                <div>
+                    songs:
+                </div>
+                <div>
+                    <DisplayAllSongs />
+                </div>
             </div>
         )
     } else {
@@ -20,7 +26,10 @@ const HomePage = () => {
                     <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
                     </div>
                 <div>
-                    EXPLORE TRACKS
+                    EXPLORE TRACKS:
+                    <div>
+                        <DisplayAllSongs />
+                    </div>
                 </div>
 
             </div>
