@@ -31,7 +31,7 @@ const Navigation = ({ isLoaded }) => {
     <div className='nav-bar'>
       <NavLink exact to="/">
           <button className='home-icon'>
-            NotSoundCloud
+            NotSOUNDCLOUD
             </button>
       </NavLink>
       {isLoaded && sessionLinks}
