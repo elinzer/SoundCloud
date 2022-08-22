@@ -5,17 +5,18 @@ import * as songActions from '../../store/songs';
 const UploadPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [songTitle, setSongTitle] = useState('');
+    const [title, setSongTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [songUrl, setSongUrl] = useState('');
+    const [url, setSongUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const [albumId, setAlbumId] = useState(null);
     const [errors, setErrors] = useState([]);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        
+
 
     }
 
@@ -26,15 +27,18 @@ const UploadPage = () => {
                 <label>Song Title:
                     <input
                         type='text'
-                        name='title'
+                        value={title}
                         placeholder="song title"
+                        onChange={(e) => setSongTitle(e.target.value)}
                         required
                     ></input>
                 </label>
                 <label>Description:
                     <input
                         type='text'
-                        name='description' placeholder="description"
+                        value={description}
+                        placeholder="description"
+                        onChange={(e) => setDescription(e.target.value)}
                         required
                     ></input>
                 </label>
@@ -42,8 +46,9 @@ const UploadPage = () => {
                     File/Url:
                     <input
                         type='text'
-                        name='url'
+                        value={url}
                         placeholder="file/url"
+                        onChange={(e) => setSongUrl(e.target.value)}
                         required
                     ></input>
                 </label>
@@ -51,8 +56,9 @@ const UploadPage = () => {
                     Cover Image:
                     <input
                         type='text'
-                        name='imageUrl'
+                        value={imageUrl}
                         placeholder="cover image url"
+                        onChange={(e) => setImageUrl(e.target.value)}
                         required
                     ></input>
                 </label>

@@ -7,24 +7,27 @@ const DisplayAllSongs = () => {
     const sessionUser = useSelector(state => state.session.user)
     const songList = useSelector(state => state.songs)
 
+    const songArr = songList.Songs;
+
     useEffect(() => {
         dispatch(songActions.getSongs());
     }, [dispatch])
 
-    console.log(songList)
+
 
     if (sessionUser) {
 
-        const userSongs = songList.Songs.filter(song => {
+        const userSongs = songArr.filter(song => {
             return song.id === sessionUser.id ? song.title : null
         })
+        
         return (
             <div>
                 <div>Your Library:</div>
                 <ul>
                     {userSongs.map(song => {
                         return (
-                            <li>{song.imageUrl}, {song.title}</li>
+                            <li key={song.id}>{song.imageUrl}, {song.title}</li>
                         )
                     })}
                 </ul>
@@ -35,8 +38,8 @@ const DisplayAllSongs = () => {
     return (
         <div>
             <ul>
-                {songList.Songs.map(song => {
-                    return (<li>
+                {songArr.map(song => {
+                    return (<li key={song.id}>
                         {song.imageUrl}, {song.title}
                     </li>)
                 })}

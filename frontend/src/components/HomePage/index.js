@@ -6,6 +6,9 @@ import './HomePage.css'
 const HomePage = () => {
 
     const sessionUser = useSelector(state => state.session.user)
+    const songState = useSelector(state => state.songs)
+
+    console.log(songState.songs)
 
     let sessionHomePage;
     if (sessionUser) {
