@@ -27,6 +27,7 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <>
         <div className='right-side-nav-buttons'>
+          <button>Demo User</button>
           <LoginFormModal />
           <SignupFormModal />
         </div>
