@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 
 
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
+
 
   let sessionLinks;
   if (sessionUser) {
@@ -18,26 +20,23 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
+      <div className='right-side-nav-buttons'>
         <LoginFormModal />
-        <NavLink to="/signup">
-          <button className='create-acct-button'>
-            Create account
-          </button>
-        </NavLink>
+        <SignupFormModal />
+      </div>
       </>
     );
   }
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">
-            <span className='home-icon'>
-              NotSoundCloud
-              </span>
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='nav-bar'>
+      <NavLink exact to="/">
+          <button className='home-icon'>
+            NotSOUNDCLOUD
+            </button>
+      </NavLink>
+      {isLoaded && sessionLinks}
+    </div>
+
   )
 }
 
