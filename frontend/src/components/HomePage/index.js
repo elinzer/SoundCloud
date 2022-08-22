@@ -15,8 +15,14 @@ const HomePage = () => {
         )
     } else {
         sessionHomePage = (
-            <div>
-                <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
+            <div className="container">
+                <div>
+                    <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
+                    </div>
+                <div>
+                    EXPLORE TRACKS
+                </div>
+
             </div>
         )
     }
