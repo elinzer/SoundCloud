@@ -12,9 +12,6 @@ const HomePage = () => {
         sessionHomePage = (
             <div>
                 <div>
-                    songs:
-                </div>
-                <div>
                     <DisplayAllSongs />
                 </div>
             </div>

@@ -15,24 +15,30 @@ const Navigation = ({ isLoaded }) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <NavLink to="/upload">
+          <button>Upload</button>
+        </NavLink>
+        <ProfileButton user={sessionUser} />
+      </>
+
     );
   } else {
     sessionLinks = (
       <>
-      <div className='right-side-nav-buttons'>
-        <LoginFormModal />
-        <SignupFormModal />
-      </div>
+        <div className='right-side-nav-buttons'>
+          <LoginFormModal />
+          <SignupFormModal />
+        </div>
       </>
     );
   }
   return (
     <div className='nav-bar'>
       <NavLink exact to="/">
-          <button className='home-icon'>
-            NotSOUNDCLOUD
-            </button>
+        <button className='home-icon'>
+          NotSOUNDCLOUD
+        </button>
       </NavLink>
       {isLoaded && sessionLinks}
     </div>
