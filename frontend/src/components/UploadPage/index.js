@@ -31,6 +31,8 @@ const UploadPage = () => {
         setDescription('');
         setImageUrl('');
         setSongUrl('')
+
+        alert(`Successfully uploaded`)
     }
 
     if (!sessionUser) {

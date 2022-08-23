@@ -126,7 +126,7 @@ const songsReducer = (state = initialState, action) => {
             for (let i = 0; i < newState.length; i++) {
                 let song = newState[i];
                 if (song.id === action.payload) {
-                    newState.splice(song)
+                    newState.splice(i, 1)
                 }
             }
             return newState;
