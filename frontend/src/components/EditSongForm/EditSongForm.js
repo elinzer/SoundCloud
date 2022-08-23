@@ -1,57 +1,47 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import * as songActions from '../../store/songs';
 
-const UploadPage = () => {
+function EditSongForm({song}) {
+
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
-    const [title, setSongTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [url, setSongUrl] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+
+    // const sessionUser = useSelector((state) => state.session.user);
+    // const songState = useSelector(state => state.songs)
+
+    const [title, setSongTitle] = useState(song.title);
+    const [description, setDescription] = useState(song.description);
+    const [url, setSongUrl] = useState(song.url);
+    const [imageUrl, setImageUrl] = useState(song.imageUrl);
     const [albumId, setAlbumId] = useState(null);
     const [errors, setErrors] = useState([]);
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const info = {
-            userId: sessionUser.id,
-            albumId,
+        const updatedSong = {
+            id: song.id,
             title,
             description,
             url,
-            imageUrl
+            imageUrl,
+            albumId
         }
+        dispatch(songActions.updateSong(updatedSong))
 
-        dispatch(songActions.addSong(info))
+        
 
-        setSongTitle('');
-        setDescription('');
-        setImageUrl('');
-        setSongUrl('')
-
-        alert(`Successfully uploaded`)
     }
-
-    if (!sessionUser) {
-        return (
-            <div>
-                Please log in to upload!
-            </div>
-        )
-    }
-
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label>Song Title:
+                <label>Title:
                     <input
                         type='text'
                         value={title}
-                        placeholder="song title"
                         onChange={(e) => setSongTitle(e.target.value)}
                         required
                     ></input>
@@ -60,35 +50,30 @@ const UploadPage = () => {
                     <input
                         type='text'
                         value={description}
-                        placeholder="description"
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     ></input>
                 </label>
-                <label>
-                    File/Url:
+                <label>Url:
                     <input
                         type='text'
                         value={url}
-                        placeholder="file/url"
                         onChange={(e) => setSongUrl(e.target.value)}
                         required
                     ></input>
                 </label>
-                <label>
-                    Cover Image:
+                <label>Cover art:
                     <input
                         type='text'
                         value={imageUrl}
-                        placeholder="cover image url"
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
                     ></input>
                 </label>
-                <button type="submit">Upload Song</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
 }
 
-export default UploadPage;
+export default EditSongForm;
