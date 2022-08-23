@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import * as songActions from '../../store/songs';
 
 function EditSongForm({song}) {
 
+    const dispatch = useDispatch();
 
+    const sessionUser = useSelector((state) => state.session.user);
     const songState = useSelector(state => state.songs)
-
-    console.log(songState)
 
     const [title, setSongTitle] = useState(song.title);
     const [description, setDescription] = useState(song.description);
@@ -19,6 +20,16 @@ function EditSongForm({song}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const updatedSong = {
+            id: song.id,
+            title,
+            description,
+            url,
+            imageUrl,
+            albumId
+        }
+        dispatch(songActions.updateSong(updatedSong))
 
     }
 
