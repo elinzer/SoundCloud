@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as songActions from '../../store/songs';
+import DeleteSong from '../DeleteSong';
 import EditSongFormModal from '../EditSongForm';
 
 const DisplayAllSongs = () => {
@@ -31,6 +32,7 @@ const DisplayAllSongs = () => {
                         return (
                             <li key={song.id}>{song.imageUrl}, {song.title}
                             <EditSongFormModal song={song}/>
+                            <DeleteSong song={song}/>
                             </li>
                         )
                     })}

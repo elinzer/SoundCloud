@@ -6,8 +6,8 @@ function EditSongForm({song}) {
 
     const dispatch = useDispatch();
 
-    const sessionUser = useSelector((state) => state.session.user);
-    const songState = useSelector(state => state.songs)
+    // const sessionUser = useSelector((state) => state.session.user);
+    // const songState = useSelector(state => state.songs)
 
     const [title, setSongTitle] = useState(song.title);
     const [description, setDescription] = useState(song.description);

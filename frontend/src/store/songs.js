@@ -4,7 +4,6 @@ import { csrfFetch } from './csrf';
 const ADD_SONGS = 'songs/addSongs';
 const CREATE_SONG = 'songs/createSong';
 const ADD_ONE_SONG = 'songs/getOneSong';
-const UPDATE_SONG = 'songs/updateSong';
 const DELETE_SONG = 'songs/deleteSong';
 
 //actions
@@ -26,6 +25,13 @@ const addOne = song => {
     return {
         type: ADD_ONE_SONG,
         payload: song
+    }
+}
+
+const deleteASong = (id) => {
+    return {
+        type: DELETE_SONG,
+        payload: id
     }
 }
 
@@ -81,6 +87,19 @@ export const updateSong = (song) => async (dispatch) => {
     return res;
 }
 
+//delete a song
+export const deleteSong = (song) => async (dispatch) => {
+    const { id } = song;
+
+    const res = await csrfFetch(`/api/songs/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch(deleteASong(id));
+    return res;
+}
+
+
+
 
 //reducer
 const initialState = [];
@@ -99,6 +118,15 @@ const songsReducer = (state = initialState, action) => {
                 let song = newState[i];
                 if (song.id === action.payload.id) {
                     song = action.payload;
+                }
+            }
+            return newState;
+        case DELETE_SONG:
+            newState = [...state];
+            for (let i = 0; i < newState.length; i++) {
+                let song = newState[i];
+                if (song.id === action.payload) {
+                    newState.splice(song)
                 }
             }
             return newState;
