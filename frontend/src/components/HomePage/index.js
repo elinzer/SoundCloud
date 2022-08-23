@@ -1,8 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import DisplayAllSongs from "./SongDisplay";
-import * as songActions from '../../store/songs';
-import bgImage from '../../images/people-at-concert-1105666.jpg'
+// import bgImage from '../../images/people-at-concert-1105666.jpg'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -13,22 +12,18 @@ const HomePage = () => {
     if (sessionUser) {
         sessionHomePage = (
             <div>
-                <div>
-                   <DisplayAllSongs />
-                </div>
+                Hello from logged in user
             </div>
         )
     } else {
         sessionHomePage = (
             <div className="container">
-                <div>
+                {/* <div>
                     <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
-                    </div>
+                    </div> */}
                 <div>
                     EXPLORE TRACKS:
                     <div>
-
-                        <DisplayAllSongs />
                     </div>
                 </div>
 
@@ -39,6 +34,7 @@ const HomePage = () => {
     return (
         <div>
           {sessionHomePage}
+          <DisplayAllSongs />
         </div>
     )
 }

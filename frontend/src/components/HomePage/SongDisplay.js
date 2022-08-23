@@ -5,18 +5,15 @@ import * as songActions from '../../store/songs';
 const DisplayAllSongs = () => {
 
     const dispatch = useDispatch();
-    console.log('COMPONENT IS RENDERING')
     const sessionUser = useSelector(state => {
         return state.session.user
     })
     const songList = useSelector(state => {
-        console.log('USE SELECTOR IS USE SELECTING');
         return state.songs
     })
 
     useEffect(() => {
-        console.log("USE EFFECT RAN")
-        return dispatch(songActions.getSongs());
+        dispatch(songActions.getSongs());
     }, [dispatch])
 
 
