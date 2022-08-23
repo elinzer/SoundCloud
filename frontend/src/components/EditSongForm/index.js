@@ -4,7 +4,7 @@ import EditSongForm from "./EditSongForm";
 
 
 
-function EditSongFormModal() {
+function EditSongFormModal({song}) {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -12,7 +12,7 @@ function EditSongFormModal() {
             <button onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditSongForm />
+                    <EditSongForm song={song}/>
                 </Modal>
 
             )}

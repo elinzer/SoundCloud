@@ -30,7 +30,7 @@ const DisplayAllSongs = () => {
                     {userSongs.map(song => {
                         return (
                             <li key={song.id}>{song.imageUrl}, {song.title}
-                            <EditSongFormModal />
+                            <EditSongFormModal song={song}/>
                             </li>
                         )
                     })}
