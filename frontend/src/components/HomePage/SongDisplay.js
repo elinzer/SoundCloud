@@ -3,24 +3,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as songActions from '../../store/songs';
 
 const DisplayAllSongs = () => {
-    const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
-    const songList = useSelector(state => state.songs)
 
-    const songArr = songList.Songs;
+    const dispatch = useDispatch();
+    console.log('COMPONENT IS RENDERING')
+    const sessionUser = useSelector(state => {
+        return state.session.user
+    })
+    const songList = useSelector(state => {
+        console.log('USE SELECTOR IS USE SELECTING');
+        return state.songs
+    })
 
     useEffect(() => {
-        dispatch(songActions.getSongs());
+        console.log("USE EFFECT RAN")
+        return dispatch(songActions.getSongs());
     }, [dispatch])
-
 
 
     if (sessionUser) {
 
-        const userSongs = songArr.filter(song => {
+        const userSongs = songList.filter(song => {
             return song.id === sessionUser.id ? song.title : null
         })
-        
+
         return (
             <div>
                 <div>Your Library:</div>
@@ -38,7 +43,7 @@ const DisplayAllSongs = () => {
     return (
         <div>
             <ul>
-                {songArr.map(song => {
+                {songList.map(song => {
                     return (<li key={song.id}>
                         {song.imageUrl}, {song.title}
                     </li>)

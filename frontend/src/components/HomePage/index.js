@@ -1,21 +1,20 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import DisplayAllSongs from "./SongDisplay";
+import * as songActions from '../../store/songs';
 import bgImage from '../../images/people-at-concert-1105666.jpg'
 import './HomePage.css'
 
 const HomePage = () => {
 
     const sessionUser = useSelector(state => state.session.user)
-    const songState = useSelector(state => state.songs)
-
-    console.log(songState.songs)
 
     let sessionHomePage;
     if (sessionUser) {
         sessionHomePage = (
             <div>
                 <div>
-                    <DisplayAllSongs />
+                   <DisplayAllSongs />
                 </div>
             </div>
         )
@@ -28,6 +27,7 @@ const HomePage = () => {
                 <div>
                     EXPLORE TRACKS:
                     <div>
+
                         <DisplayAllSongs />
                     </div>
                 </div>
