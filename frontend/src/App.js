@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
+import UploadPage from './components/UploadPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-          <HomePage />
+            <HomePage />
+          </Route>
+          <Route path='/upload'>
+            <UploadPage />
           </Route>
         </Switch>
       )}
