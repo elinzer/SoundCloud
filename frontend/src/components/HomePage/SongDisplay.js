@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as songActions from '../../store/songs';
+import EditSongFormModal from '../EditSongForm';
 
 const DisplayAllSongs = () => {
 
@@ -28,7 +29,9 @@ const DisplayAllSongs = () => {
                 <ul>
                     {userSongs.map(song => {
                         return (
-                            <li key={song.id}>{song.imageUrl}, {song.title}</li>
+                            <li key={song.id}>{song.imageUrl}, {song.title}
+                            <EditSongFormModal />
+                            </li>
                         )
                     })}
                 </ul>
