@@ -18,9 +18,8 @@ const DisplayAllSongs = () => {
 
 
     if (sessionUser) {
-
-        const userSongs = songList.filter(song => {
-            return song.id === sessionUser.id ? song.title : null
+        let userSongs = songList.filter(song => {
+            return song.userId === sessionUser.id
         })
 
         return (

@@ -15,24 +15,28 @@ const load = list => {
     }
 }
 
+const add = song => {
+    return {
+        type: CREATE_SONG,
+        payload: song
+    }
+}
 
 //thunks
 //get songs
 export const getSongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/songs');
-    console.log(res)
     if (res.ok) {
-        console.log('THIS IS THE RESPONSE RETURNED FROM THE FETCH')
         const list = await res.json();
         dispatch(load(list.Songs));
     }
 };
 
 //post song
-export const addSong = (song, userId) => async (dispatch) => {
+export const addSong = (info) => async (dispatch) => {
 
-    const { title, description, url, imageUrl, albumId} = song;
-
+    const { userId, title, description, url, imageUrl, albumId} = info;
+    
     const res = await csrfFetch('/api/songs', {
         method: 'POST',
         body: JSON.stringify({
@@ -45,7 +49,7 @@ export const addSong = (song, userId) => async (dispatch) => {
         })
     })
     const data = await res.json();
-    dispatch( )
+    dispatch(add(data))
     return res;
 }
 

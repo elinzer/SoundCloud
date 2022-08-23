@@ -16,8 +16,29 @@ const UploadPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const info = {
+            userId: sessionUser.id,
+            albumId,
+            title,
+            description,
+            url,
+            imageUrl
+        }
 
+        dispatch(songActions.addSong(info))
 
+        setSongTitle('');
+        setDescription('');
+        setImageUrl('');
+        setSongUrl('')
+    }
+
+    if (!sessionUser) {
+        return (
+            <div>
+                Please log in to upload!
+            </div>
+        )
     }
 
 
