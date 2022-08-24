@@ -118,8 +118,10 @@ const songsReducer = (state = initialState, action) => {
                 let song = newState[i];
                 if (song.id === action.payload.id) {
                     song = action.payload;
+                    newState.splice(i, 1, song)
                 }
             }
+            console.log(newState)
             return newState;
         case DELETE_SONG:
             newState = [...state];

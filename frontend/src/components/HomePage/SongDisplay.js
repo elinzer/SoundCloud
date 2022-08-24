@@ -31,12 +31,12 @@ const DisplayAllSongs = () => {
                 <ul>
                     {userSongs.map(song => {
                         return (
-                            <>
+                            <div>
                                 <NavLink key={song.id} to={`/${song.id}`}>{song.imageUrl}, {song.title}
                                 </NavLink>
                                 <EditSongFormModal song={song} />
                                 <DeleteSong song={song} />
-                            </>
+                            </div>
                         )
                     })}
                 </ul>
@@ -48,8 +48,11 @@ const DisplayAllSongs = () => {
         <div>
             <ul>
                 {songList.map(song => {
-                    return (<NavLink key={song.id} to={`/${song.id}`}>{song.imageUrl}, {song.title}
-                    </NavLink>)
+                    return (
+                        <div>
+                            <NavLink key={song.id} to={`/${song.id}`}>{song.imageUrl}, {song.title}
+                            </NavLink>
+                        </div>)
                 })}
             </ul>
         </div>
