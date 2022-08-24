@@ -27,7 +27,7 @@ function App() {
           <Route path='/upload'>
             <UploadPage />
           </Route>
-          <Route path='/:id'>
+          <Route path='/songs/:id'>
             <SongPage />
           </Route>
         </Switch>
