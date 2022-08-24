@@ -16,11 +16,11 @@ const load = list => {
 
 
 //thunks
-export const getComments = (id) => async (dispatch) => {
+export const getComments = (info) => async (dispatch) => {
 
-    const {songId} = id;
+    const { id } = info
 
-    const res = await fetch(`/api/songs/${songId}/comments`);
+    const res = await fetch(`/api/songs/${id}/comments`);
 
     console.log(res)
 
@@ -38,10 +38,11 @@ export const getComments = (id) => async (dispatch) => {
 let initialState = {}
 
 const commentsReducer = (state = initialState, action) => {
-    let newState;
+    let newState = {};
     switch (action.type) {
         case GET_COMMENTS:
-            newState = action.payload.forEach(comment => newState[comment.id] = comment)
+            action.payload.forEach(comment => newState[comment.id] = comment)
+            return newState;
         default:
             return state;
     }

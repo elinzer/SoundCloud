@@ -9,10 +9,15 @@ const SongPage = () => {
     const song = useSelector(state => state.songs.find(song => song.id == id))
     const commentState = useSelector(state => state.comments)
 
-    console.log(commentState)
+    const commentsArr = Object.values(commentState)
+
+
+    const data = {
+        id
+    }
 
     useEffect(() => {
-        dispatch(commentActions.getComments(id))
+        dispatch(commentActions.getComments(data))
     }, [dispatch])
 
 
@@ -26,7 +31,12 @@ const SongPage = () => {
                 <li>{song.title}</li>
                 <li>{song.description}</li>
                 <li>{song.imageUrl}</li>
-                <li>COMMENTS HERE</li>
+                <li>Comments:
+                    <ul>
+                        {commentsArr.map(comment =>
+                            (<li key={comment.id}>{comment.body}</li>))}
+                    </ul>
+                </li>
             </ul>
         </div>
     )
