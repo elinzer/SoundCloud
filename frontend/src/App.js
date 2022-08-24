@@ -6,6 +6,8 @@ import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
 import UploadPage from './components/UploadPage';
 import SongPage from './components/SongPage';
+import ReactAudioPlayer from 'react-audio-player';
+import './css/AudioPlayer.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <ReactAudioPlayer className='audioPlayer' controls={true}/>
     </>
   );
 }
