@@ -9,9 +9,9 @@ const SongPage = () => {
     const [comment, setComment] = useState('');
     const song = useSelector(state => state.songs.find(song => song.id == id));
     const commentState = useSelector(state => state.comments);
-
     const commentsArr = Object.values(commentState);
 
+    const sessionUser = useSelector(state => state.session.user);
 
     const data = {
         id
@@ -44,6 +44,14 @@ const SongPage = () => {
             setComment('');
         }
 
+    }
+
+    const sendDelete = (e) => {
+        e.preventDefault();
+
+        const commentId = {
+            
+        }
 
     }
 
@@ -56,7 +64,7 @@ const SongPage = () => {
                 <li>Comments:
                     <ul>
                         {commentsArr.map(comment =>
-                            (<li key={comment.id}>{comment.body}</li>))}
+                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button onClick={sendDelete}>Delete</button>) : null}</li>))}
                     </ul>
                 </li>
                 <div>Leave a comment:

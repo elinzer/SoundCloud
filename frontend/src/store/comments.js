@@ -59,6 +59,10 @@ export const postComment = (comment) => async (dispatch) => {
     }
 }
 
+//delete comment
+export const deleteComment = (id) => async (dispatch) => {
+    
+}
 
 
 
