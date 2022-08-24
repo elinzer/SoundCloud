@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as songActions from '../../store/songs';
 import DeleteSong from '../DeleteSong';
 import EditSongFormModal from '../EditSongForm';
+import { NavLink, Route } from 'react-router-dom';
 
 const DisplayAllSongs = () => {
 
@@ -30,10 +31,12 @@ const DisplayAllSongs = () => {
                 <ul>
                     {userSongs.map(song => {
                         return (
-                            <li key={song.id}>{song.imageUrl}, {song.title}
-                            <EditSongFormModal song={song}/>
-                            <DeleteSong song={song}/>
-                            </li>
+                            <>
+                                <NavLink key={song.id} to={`/${song.id}`}>{song.imageUrl}, {song.title}
+                                </NavLink>
+                                <EditSongFormModal song={song} />
+                                <DeleteSong song={song} />
+                            </>
                         )
                     })}
                 </ul>
@@ -45,9 +48,8 @@ const DisplayAllSongs = () => {
         <div>
             <ul>
                 {songList.map(song => {
-                    return (<li key={song.id}>
-                        {song.imageUrl}, {song.title}
-                    </li>)
+                    return (<NavLink key={song.id} to={`/${song.id}`}>{song.imageUrl}, {song.title}
+                    </NavLink>)
                 })}
             </ul>
         </div>

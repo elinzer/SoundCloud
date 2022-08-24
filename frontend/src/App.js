@@ -5,6 +5,7 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
 import UploadPage from './components/UploadPage';
+import SongPage from './components/SongPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path='/upload'>
             <UploadPage />
+          </Route>
+          <Route path='/:id'>
+            <SongPage />
           </Route>
         </Switch>
       )}
