@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 //types
 const GET_COMMENTS = 'comments/getComments';
-
+const POST_COMMENT = 'comments/postComment';
 
 
 //actions
@@ -13,16 +13,20 @@ const load = list => {
     }
 }
 
+const post = comment => {
+    return {
+        type: POST_COMMENT,
+        payload: comment
+    }
+}
 
 
 //thunks
+//get comments
 export const getComments = (info) => async (dispatch) => {
 
     const { id } = info
-
     const res = await fetch(`/api/songs/${id}/comments`);
-
-    console.log(res)
 
     if (res.ok) {
         const list = await res.json();
@@ -30,6 +34,18 @@ export const getComments = (info) => async (dispatch) => {
     }
 }
 
+//post comment
+export const postComment = (comment) => async (dispatch) => {
+
+    const { id, body} = comment;
+
+    const res = await csrfFetch(`/api/songs/${id}/comments`, {
+        method: "POST",
+        body: JSON.stringify({
+            body
+        })
+    })
+}
 
 
 
@@ -38,9 +54,10 @@ export const getComments = (info) => async (dispatch) => {
 let initialState = {}
 
 const commentsReducer = (state = initialState, action) => {
-    let newState = {};
+    let newState;
     switch (action.type) {
         case GET_COMMENTS:
+            newState = {};
             action.payload.forEach(comment => newState[comment.id] = comment)
             return newState;
         default:

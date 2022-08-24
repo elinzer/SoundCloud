@@ -1,24 +1,25 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import * as commentActions from '../../store/comments';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const SongPage = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    const song = useSelector(state => state.songs.find(song => song.id == id))
-    const commentState = useSelector(state => state.comments)
+    const [comment, setComment] = useState('');
+    const song = useSelector(state => state.songs.find(song => song.id == id));
+    const commentState = useSelector(state => state.comments);
 
-    const commentsArr = Object.values(commentState)
+    const commentsArr = Object.values(commentState);
 
 
     const data = {
         id
-    }
+    };
 
     useEffect(() => {
         dispatch(commentActions.getComments(data))
-    }, [dispatch])
+    }, [dispatch]);
 
 
     if (!song) {
@@ -37,6 +38,12 @@ const SongPage = () => {
                             (<li key={comment.id}>{comment.body}</li>))}
                     </ul>
                 </li>
+                <div>Leave a comment:
+                    <br />
+                    <textarea minLength='15' placeholder='I love this song...' wrap='soft'></textarea>
+                    <br />
+                    <button type='submit'>Post comment</button>
+                    </div>
             </ul>
         </div>
     )
