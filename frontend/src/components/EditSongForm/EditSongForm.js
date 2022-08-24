@@ -2,13 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import * as songActions from '../../store/songs';
 
-function EditSongForm({song}) {
+function EditSongForm({song, modalProp}) {
 
     const dispatch = useDispatch();
 
-    // const sessionUser = useSelector((state) => state.session.user);
-    // const songState = useSelector(state => state.songs)
-
+    const [showModal, setShowModal] = modalProp;
     const [title, setSongTitle] = useState(song.title);
     const [description, setDescription] = useState(song.description);
     const [url, setSongUrl] = useState(song.url);
@@ -31,7 +29,7 @@ function EditSongForm({song}) {
         }
         dispatch(songActions.updateSong(updatedSong))
 
-        
+        setShowModal(false);
 
     }
 
