@@ -54,6 +54,7 @@ const SongPage = () => {
         }
 
         dispatch(commentActions.deleteComment(commentId))
+
     }
 
     return (
