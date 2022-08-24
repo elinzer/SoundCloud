@@ -45,7 +45,7 @@ export const getComments = (info) => async (dispatch) => {
 //post comment
 export const postComment = (comment) => async (dispatch) => {
 
-    const { id, body} = comment;
+    const { id, body } = comment;
 
     const res = await csrfFetch(`/api/songs/${id}/comments`, {
         method: "POST",
@@ -60,8 +60,16 @@ export const postComment = (comment) => async (dispatch) => {
 }
 
 //delete comment
-export const deleteComment = (id) => async (dispatch) => {
-    
+export const deleteComment = (commentId) => async (dispatch) => {
+    const { id } = commentId;
+    const res = await csrfFetch(`/api/comments/${id}`, {
+        method: "DELETE"
+    })
+
+    if (res.ok) {
+        dispatch(deleteCom(id));
+    }
+
 }
 
 
@@ -77,8 +85,12 @@ const commentsReducer = (state = initialState, action) => {
             action.payload.forEach(comment => newState[comment.id] = comment)
             return newState;
         case POST_COMMENT:
-            newState = {...state};
+            newState = { ...state };
             newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_COMMENT:
+            newState = { ...state };
+            delete newState[action.payload.id];
             return newState;
         default:
             return state;

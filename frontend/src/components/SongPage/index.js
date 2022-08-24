@@ -31,8 +31,8 @@ const SongPage = () => {
 
         if (!comment) {
             alert(`comment can't be blank!`)
-        } else if (comment.length < 10) {
-            alert(`comment must be at least 10 characters!`)
+        } else if (comment.length < 3) {
+            alert(`comment must be at least 3 characters!`)
         } else {
             const commentData = {
                 id: song.id,
@@ -46,13 +46,14 @@ const SongPage = () => {
 
     }
 
-    const sendDelete = (e) => {
+    const sendDelete = (e, id) => {
         e.preventDefault();
 
         const commentId = {
-            
+            id
         }
 
+        dispatch(commentActions.deleteComment(commentId))
     }
 
     return (
@@ -64,7 +65,7 @@ const SongPage = () => {
                 <li>Comments:
                     <ul>
                         {commentsArr.map(comment =>
-                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button onClick={sendDelete}>Delete</button>) : null}</li>))}
+                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button onClick={(e) => sendDelete(e, comment.id)}>Delete</button>) : null}</li>))}
                     </ul>
                 </li>
                 <div>Leave a comment:
