@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 //types
 const GET_COMMENTS = 'comments/getComments';
 const POST_COMMENT = 'comments/postComment';
+const DELETE_COMMENT = 'comments/deleteComment';
 
 
 //actions
@@ -17,6 +18,13 @@ const post = comment => {
     return {
         type: POST_COMMENT,
         payload: comment
+    }
+}
+
+const deleteCom = id => {
+    return {
+        type: DELETE_COMMENT,
+        payload: id
     }
 }
 
@@ -45,6 +53,10 @@ export const postComment = (comment) => async (dispatch) => {
             body
         })
     })
+    if (res.ok) {
+        const newComment = await res.json();
+        dispatch(post(newComment))
+    }
 }
 
 
@@ -59,6 +71,10 @@ const commentsReducer = (state = initialState, action) => {
         case GET_COMMENTS:
             newState = {};
             action.payload.forEach(comment => newState[comment.id] = comment)
+            return newState;
+        case POST_COMMENT:
+            newState = {...state};
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return state;

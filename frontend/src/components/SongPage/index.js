@@ -26,6 +26,27 @@ const SongPage = () => {
         return `Whoops something went wrong!`
     }
 
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        if (!comment) {
+            alert(`comment can't be blank!`)
+        } else if (comment.length < 10) {
+            alert(`comment must be at least 10 characters!`)
+        } else {
+            const commentData = {
+                id: song.id,
+                body: comment
+            }
+
+            dispatch(commentActions.postComment(commentData))
+
+            setComment('');
+        }
+
+
+    }
+
     return (
         <div>
             <ul>
@@ -40,10 +61,15 @@ const SongPage = () => {
                 </li>
                 <div>Leave a comment:
                     <br />
-                    <textarea minLength='15' placeholder='I love this song...' wrap='soft'></textarea>
+                    <textarea
+                        placeholder='I love this song...'
+                        wrap='soft'
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
                     <br />
-                    <button type='submit'>Post comment</button>
-                    </div>
+                    <button onClick={handleClick}>Post comment</button>
+                </div>
             </ul>
         </div>
     )
