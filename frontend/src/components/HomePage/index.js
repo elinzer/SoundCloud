@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import DisplayAllSongs from "./SongDisplay";
-// import bgImage from '../../images/people-at-concert-1105666.jpg'
+import bgImage from '../../images/people-at-concert-1105666.jpg'
 import '../../css/HomePage.css'
 
 const HomePage = () => {

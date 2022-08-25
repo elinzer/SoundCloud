@@ -17,7 +17,9 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <>
         <NavLink to="/upload">
-          <button>Upload</button>
+          <button>
+          <i className="fa-solid fa-arrow-up-from-bracket"></i>
+            <span> Upload</span></button>
         </NavLink>
         <ProfileButton user={sessionUser} />
       </>
