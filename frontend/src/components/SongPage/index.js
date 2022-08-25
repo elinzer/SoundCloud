@@ -8,15 +8,14 @@ const SongPage = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [comment, setComment] = useState('');
-    const song = useSelector(state => state.songs.find(song => song.id == id));
+    const songState = useSelector(state => state.songs);
+    const song = songState.find(song => song.id == id)
+    const sessionUser = useSelector(state => state.session.user);
     const commentState = useSelector(state => state.comments);
     const commentsArr = Object.values(commentState);
 
-    const sessionUser = useSelector(state => state.session.user);
 
-    const data = {
-        id
-    };
+    const data = { id };
 
     useEffect(() => {
         dispatch(commentActions.getComments(data))
@@ -55,9 +54,9 @@ const SongPage = () => {
         return (
             <div className='song-page-container'>
                 <div className='song-card'>
-                    <li>{song.title}</li>
-                    <li>{song.description}</li>
-                    <li>{song.imageUrl}</li>
+                    <div><h4>{song.title}</h4></div>
+                    <div>About the song: {song.description}</div>
+                    <div><img className='song-img' src={song.imageUrl}></img></div>
                     <li>Comments:
                         <ul>
                             {commentsArr.map(comment =>
@@ -72,9 +71,9 @@ const SongPage = () => {
     return (
         <div className='song-page-container'>
             <div className='song-card'>
-                <div className='image'><img src={song.imageUrl}></img></div>
+                <div className='image'><img className='song-img'src={song.imageUrl}></img></div>
                 <div className='title'><h4>{song.title}</h4></div>
-                <div className='description'>About: {song.description}</div>
+                <div className='description'>About the song: {song.description}</div>
                 <div>Comments:
                     <ul>
                         {commentsArr.map(comment =>
