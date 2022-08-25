@@ -54,9 +54,14 @@ const SongPage = () => {
         return (
             <div className='song-page-container'>
                 <div className='song-card'>
+                    <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
+                        <img className='song-img' src={song.imageUrl}></img>
+                        <div className='play-icon-div'>
+                            <i className="fa-solid fa-circle-play" />
+                        </div>
+                    </div>
                     <div><h4>{song.title}</h4></div>
-                    <div>About the song: {song.description}</div>
-                    <div><img className='song-img' src={song.imageUrl}></img></div>
+                    <div>About: {song.description}</div>
                     <li>Comments:
                         <ul>
                             {commentsArr.map(comment =>
@@ -71,9 +76,14 @@ const SongPage = () => {
     return (
         <div className='song-page-container'>
             <div className='song-card'>
-                <div className='image'><img className='song-img'src={song.imageUrl}></img></div>
+                <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
+                    <img className='song-img' src={song.imageUrl}></img>
+                    <div className='play-icon-div'>
+                            <i className="fa-solid fa-circle-play" />
+                        </div>
+                </div>
                 <div className='title'><h4>{song.title}</h4></div>
-                <div className='description'>About the song: {song.description}</div>
+                <div className='description'>About: {song.description}</div>
                 <div>Comments:
                     <ul>
                         {commentsArr.map(comment =>
