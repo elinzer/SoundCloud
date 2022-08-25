@@ -21,7 +21,6 @@ const SongPage = () => {
         dispatch(commentActions.getComments(data))
     }, [dispatch]);
 
-
     if (!song) {
         return `Whoops something went wrong!`
     }
@@ -38,9 +37,7 @@ const SongPage = () => {
                 id: song.id,
                 body: comment
             }
-
             dispatch(commentActions.postComment(commentData))
-
             setComment('');
         }
 
@@ -48,13 +45,27 @@ const SongPage = () => {
 
     const sendDelete = (e, id) => {
         e.preventDefault();
-
-        const commentId = {
-            id
-        }
-
+        const commentId = {id}
         dispatch(commentActions.deleteComment(commentId))
 
+    }
+
+    if (!sessionUser) {
+        return (
+            <div>
+            <ul>
+                <li>{song.title}</li>
+                <li>{song.description}</li>
+                <li>{song.imageUrl}</li>
+                <li>Comments:
+                    <ul>
+                        {commentsArr.map(comment =>
+                            (<li key={comment.id}>{comment.body}</li>))}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        )
     }
 
     return (

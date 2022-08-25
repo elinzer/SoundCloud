@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
+import SignupFormModal from '../SignupFormModal';
 import './LoginForm.css';
 
 function LoginForm() {
@@ -10,10 +11,11 @@ function LoginForm() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false)
 
-  if (sessionUser) return (
-    <Redirect to="/" />
-  );
+  // if (sessionUser) return (
+  //   <Redirect to="/" />
+  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ function LoginForm() {
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
-        />
+          />
       </label>
       <label>
         Password
@@ -46,9 +48,12 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        />
+          />
       </label>
       <button type="submit">Log In</button>
+      {/* <span>
+      New user? <SignupFormModal/>
+    </span> */}
     </form>
   );
 }
