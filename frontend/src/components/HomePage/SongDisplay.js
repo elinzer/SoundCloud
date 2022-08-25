@@ -32,7 +32,7 @@ const DisplayAllSongs = () => {
                     {userSongs.map(song => {
                         return (
                             <div>
-                                <NavLink key={song.id} to={`/songs/${song.id}`}>{song.imageUrl}, {song.title}
+                                <NavLink key={song.id} to={`/songs/${song.id}`}><img src={song.imageUrl}></img>, {song.title}
                                 </NavLink>
                                 <EditSongFormModal song={song} />
                                 <DeleteSong song={song} />

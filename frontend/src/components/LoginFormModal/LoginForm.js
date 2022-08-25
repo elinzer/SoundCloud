@@ -11,10 +11,11 @@ function LoginForm() {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false)
 
-  if (sessionUser) return (
-    <Redirect to="/" />
-  );
+  // if (sessionUser) return (
+  //   <Redirect to="/" />
+  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +39,7 @@ function LoginForm() {
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
-        />
+          />
       </label>
       <label>
         Password
@@ -47,12 +48,12 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        />
+          />
       </label>
       <button type="submit">Log In</button>
       {/* <span>
       New user? <SignupFormModal/>
-      </span> */}
+    </span> */}
     </form>
   );
 }
