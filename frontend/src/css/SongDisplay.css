@@ -13,3 +13,17 @@
     text-align: center;
     margin: 0px 5px;
 }
+
+.delete-comment {
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-comment:hover {
+    box-shadow: 1px 1px 1px gray;
+}
+
+textarea {
+    resize: none;
+}

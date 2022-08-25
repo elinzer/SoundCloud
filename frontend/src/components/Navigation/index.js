@@ -40,7 +40,8 @@ const Navigation = ({ isLoaded }) => {
     <div className='nav-bar'>
       <NavLink exact to="/">
         <button className='home-icon'>
-          NotSOUNDCLOUD
+        <i className="fa-solid fa-headphones-simple" />
+          <span> NotSOUNDCLOUD</span>
         </button>
       </NavLink>
       {isLoaded && sessionLinks}
