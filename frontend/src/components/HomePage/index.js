@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import DisplayAllSongs from "./SongDisplay";
 // import bgImage from '../../images/people-at-concert-1105666.jpg'
-import './HomePage.css'
+import '../../css/HomePage.css'
 
 const HomePage = () => {
 
@@ -11,9 +11,7 @@ const HomePage = () => {
     let sessionHomePage;
     if (sessionUser) {
         sessionHomePage = (
-            <div>
-                Hello from logged in user
-            </div>
+           null
         )
     } else {
         sessionHomePage = (
