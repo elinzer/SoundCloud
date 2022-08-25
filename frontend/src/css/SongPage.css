@@ -10,6 +10,28 @@
 
 }
 
-.song-img {
-    
+/* .song-img:hover {
+    opacity: 75%;
+} */
+
+
+.fa-circle-play {
+    font-size: 50px;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    color: #f50;
+    cursor: pointer;
+}
+
+.fa-circle-play:hover {
+    text-shadow: 2px;
+}
+
+.play-icon-div {
+    display: none;
+}
+
+div.image-icon-holder:hover > div.play-icon-div {
+    display: inline;
 }
