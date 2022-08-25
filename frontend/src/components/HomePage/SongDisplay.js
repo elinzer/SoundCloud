@@ -4,6 +4,7 @@ import * as songActions from '../../store/songs';
 import DeleteSong from '../DeleteSong';
 import EditSongFormModal from '../EditSongForm';
 import { NavLink, Route } from 'react-router-dom';
+import '../../css/SongDisplay.css';
 
 const DisplayAllSongs = () => {
 
@@ -27,34 +28,41 @@ const DisplayAllSongs = () => {
 
         return (
             <div>
-                <div>Your Library:</div>
-                <ul>
+                <h3>Your Library:</h3>
+                <div className='song-list-container'>
                     {userSongs.map(song => {
                         return (
-                            <div>
-                                <NavLink key={song.id} to={`/songs/${song.id}`}><img src={song.imageUrl}></img>, {song.title}
-                                </NavLink>
-                                <EditSongFormModal song={song} />
-                                <DeleteSong song={song} />
+                            <div className='song-box'>
+                                <img className='song-img' src={song.imageUrl}></img>
+                                <div>
+                                    <NavLink key={song.id} to={`/songs/${song.id}`}>{song.title}
+                                    </NavLink>
+                                </div>
+                                <div>
+                                    <EditSongFormModal song={song} />
+                                    <DeleteSong song={song} />
+                                </div>
                             </div>
                         )
                     })}
-                </ul>
+                    </div>
             </div>
         )
     }
 
     return (
-        <div>
-            <ul>
+        <div className='song-list-container'>
                 {songList.map(song => {
                     return (
-                        <div>
-                            <NavLink key={song.id} to={`/songs/${song.id}`}>{song.imageUrl}, {song.title}
+                        <div className='song-box'>
+                            <img className='song-img' src={song.imageUrl}></img>
+                            <NavLink key={song.id} to={`/songs/${song.id}`}>
+                                <div className='title-card'>
+                                    {song.title}
+                                </div>
                             </NavLink>
                         </div>)
                 })}
-            </ul>
         </div>
     )
 }

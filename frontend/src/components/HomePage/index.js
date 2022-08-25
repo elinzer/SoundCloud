@@ -11,9 +11,7 @@ const HomePage = () => {
     let sessionHomePage;
     if (sessionUser) {
         sessionHomePage = (
-            <div>
-                Hello from logged in user
-            </div>
+           null
         )
     } else {
         sessionHomePage = (
