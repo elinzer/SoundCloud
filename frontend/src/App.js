@@ -11,6 +11,7 @@ import './css/AudioPlayer.css';
 
 function App() {
   const dispatch = useDispatch();
+  const [songAudio, setSongAudio] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -22,17 +23,17 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            <HomePage />
+            <HomePage audioProp={[songAudio, setSongAudio]} />
           </Route>
           <Route path='/upload'>
             <UploadPage />
           </Route>
           <Route path='/songs/:id'>
-            <SongPage />
+            <SongPage audioProp={[songAudio, setSongAudio]} />
           </Route>
         </Switch>
       )}
-      <ReactAudioPlayer className='audioPlayer' controls={true}/>
+      <ReactAudioPlayer className='audioPlayer' src={songAudio} autoPlay={true} controls={true} volume={.25}/>
     </>
   );
 }

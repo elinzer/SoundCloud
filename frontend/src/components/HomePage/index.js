@@ -4,7 +4,7 @@ import DisplayAllSongs from "./SongDisplay";
 import bgImage from '../../images/Screen Shot 2022-08-25 at 8.14.10 PM.png'
 import '../../css/HomePage.css'
 
-const HomePage = () => {
+const HomePage = ({audioProp}) => {
 
     const sessionUser = useSelector(state => state.session.user)
 
@@ -33,7 +33,7 @@ const HomePage = () => {
     return (
         <div>
             {sessionHomePage}
-            <DisplayAllSongs />
+            <DisplayAllSongs audioProp={audioProp}/>
         </div>
     )
 }

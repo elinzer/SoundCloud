@@ -4,9 +4,10 @@ import * as commentActions from '../../store/comments';
 import { useEffect, useState } from 'react';
 import '../../css/SongPage.css'
 
-const SongPage = () => {
+const SongPage = ({audioProp}) => {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const [songAudio, setSongAudio] = audioProp;
     const [comment, setComment] = useState('');
     const songState = useSelector(state => state.songs);
     const song = songState.find(song => song.id == id)
@@ -57,7 +58,7 @@ const SongPage = () => {
                     <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
                         <img className='song-img' src={song.imageUrl}></img>
                         <div className='play-icon-div'>
-                            <i className="fa-solid fa-circle-play" />
+                            <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                         </div>
                     </div>
                     <div><h4>{song.title}</h4></div>
@@ -79,7 +80,7 @@ const SongPage = () => {
                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
                     <img className='song-img' src={song.imageUrl}></img>
                     <div className='play-icon-div'>
-                            <i className="fa-solid fa-circle-play" />
+                            <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                         </div>
                 </div>
                 <div className='title'><h4>{song.title}</h4></div>

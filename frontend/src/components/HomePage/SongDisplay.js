@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as songActions from '../../store/songs';
 import DeleteSong from '../DeleteSong';
@@ -7,7 +7,9 @@ import { NavLink } from 'react-router-dom';
 import '../../css/SongDisplay.css';
 import '../../css/SongPage.css';
 
-const DisplayAllSongs = () => {
+const DisplayAllSongs = ({ audioProp }) => {
+
+    const [songAudio, setSongAudio] = audioProp;
 
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => {
@@ -37,7 +39,7 @@ const DisplayAllSongs = () => {
                                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
                                     <img className='song-img' src={song.imageUrl}></img>
                                     <div className='play-icon-div'>
-                                        <i className="fa-solid fa-circle-play" />
+                                        <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                                     </div>
                                 </div>
                                 <div>
@@ -64,18 +66,18 @@ const DisplayAllSongs = () => {
                         <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
                             <img className='song-img' src={song.imageUrl}></img>
                             <div className='play-icon-div'>
-                                <i className="fa-solid fa-circle-play" />
+                                <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                             </div>
                         </div>
-                            <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
-                                <div className='title-card'>
-                                    {song.title}
-                                </div>
-                            </NavLink>
-                        </div>)
+                        <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
+                            <div className='title-card'>
+                                {song.title}
+                            </div>
+                        </NavLink>
+                    </div>)
             })}
-                    </div>
-                )
-            }
+        </div>
+    )
+}
 
 export default DisplayAllSongs;
