@@ -30,8 +30,8 @@ const SongPage = () => {
 
         if (!comment) {
             alert(`comment can't be blank!`)
-        } else if (comment.length < 3) {
-            alert(`comment must be at least 3 characters!`)
+        } else if (comment.length < 2) {
+            alert(`comment must be at least 2 characters!`)
         } else {
             const commentData = {
                 id: song.id,
@@ -62,12 +62,12 @@ const SongPage = () => {
                     </div>
                     <div><h4>{song.title}</h4></div>
                     <div>About: {song.description}</div>
-                    <li>Comments:
-                        <ul>
+                    <div className='comment-container'>Comments:
+                        <ul className='comment-list'>
                             {commentsArr.map(comment =>
                                 (<li key={comment.id}>{comment.body}</li>))}
                         </ul>
-                    </li>
+                    </div>
                 </div>
             </div>
         )
@@ -84,10 +84,10 @@ const SongPage = () => {
                 </div>
                 <div className='title'><h4>{song.title}</h4></div>
                 <div className='description'>About: {song.description}</div>
-                <div>Comments:
-                    <ul>
+                <div className='comment-container'>Comments:
+                    <ul className='comment-list'>
                         {commentsArr.map(comment =>
-                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button onClick={(e) => sendDelete(e, comment.id)}>Delete</button>) : null}</li>))}
+                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}</li>))}
                     </ul>
                 </div>
                 <div className='song-comment'>Leave a comment:
@@ -99,7 +99,7 @@ const SongPage = () => {
                         onChange={(e) => setComment(e.target.value)}
                     ></textarea>
                     <br />
-                    <button onClick={handleClick}>Post comment</button>
+                    <button onClick={handleClick}>Post</button>
                 </div>
             </div>
         </div>

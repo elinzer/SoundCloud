@@ -6,13 +6,13 @@
 }
 
 .song-card {
-    border: 2px dotted blue;
+    background-color: grey;
 
 }
 
-/* .song-img:hover {
+.song-img:hover {
     opacity: 75%;
-} */
+}
 
 
 .fa-circle-play {
@@ -24,14 +24,19 @@
     cursor: pointer;
 }
 
-.fa-circle-play:hover {
-    text-shadow: 2px;
-}
-
 .play-icon-div {
     display: none;
 }
 
 div.image-icon-holder:hover > div.play-icon-div {
     display: inline;
+}
+
+.comment-container {
+    border: 1px solid black;
+    display: flex;
+}
+
+.comment-list {
+    border: 1px solid blue;
 }

@@ -29,6 +29,12 @@ module.exports = {
       title: '3rd Album',
       description: 'Trilogy Album',
       imageUrl: 'www.goodImages.com'
+    },
+    {
+      userId: 4,
+      title: 'Another One',
+      description: 'Another Album',
+      imageUrl: 'www.goodImages.com'
     }
    ])
   },

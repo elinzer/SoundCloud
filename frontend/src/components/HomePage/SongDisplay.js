@@ -35,13 +35,13 @@ const DisplayAllSongs = () => {
                         return (
                             <div className='song-box'>
                                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                                <img className='song-img' src={song.imageUrl}></img>
-                                <div className='play-icon-div'>
-                                    <i className="fa-solid fa-circle-play" />
-                                </div>
+                                    <img className='song-img' src={song.imageUrl}></img>
+                                    <div className='play-icon-div'>
+                                        <i className="fa-solid fa-circle-play" />
+                                    </div>
                                 </div>
                                 <div>
-                                    <NavLink key={song.id} to={`/songs/${song.id}`}>{song.title}
+                                    <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>{song.title}
                                     </NavLink>
                                 </div>
                                 <div>
@@ -61,16 +61,21 @@ const DisplayAllSongs = () => {
             {songList.map(song => {
                 return (
                     <div className='song-box'>
-                        <img className='song-img' src={song.imageUrl}></img>
-                        <NavLink key={song.id} to={`/songs/${song.id}`}>
-                            <div className='title-card'>
-                                {song.title}
+                        <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
+                            <img className='song-img' src={song.imageUrl}></img>
+                            <div className='play-icon-div'>
+                                <i className="fa-solid fa-circle-play" />
                             </div>
-                        </NavLink>
-                    </div>)
+                        </div>
+                            <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
+                                <div className='title-card'>
+                                    {song.title}
+                                </div>
+                            </NavLink>
+                        </div>)
             })}
-        </div>
-    )
-}
+                    </div>
+                )
+            }
 
 export default DisplayAllSongs;
