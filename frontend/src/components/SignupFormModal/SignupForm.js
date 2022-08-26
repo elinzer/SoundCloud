@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+import '../../css/SignupForm.css';
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -41,16 +42,16 @@ function SignupForm() {
   };
 
   return (
-    <div>
-      <h3>Sign up</h3>
+    <div className="sign-up-form-container">
+      <h3>Join NotSoundCloud</h3>
       {hasSubmitted && validationErrors.length > 0 && (
         <ul>
         {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       )}
-      <form onSubmit={handleSubmit}>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
         <label>
-          First Name
+          First Name:
           <input
             type="text"
             value={firstName}
@@ -59,7 +60,7 @@ function SignupForm() {
           />
         </label>
         <label>
-          Last Name
+          Last Name:
           <input
             type="text"
             value={lastName}
@@ -68,7 +69,7 @@ function SignupForm() {
           />
         </label>
         <label>
-          Email
+          Email:
           <input
             type="text"
             value={email}
@@ -77,7 +78,7 @@ function SignupForm() {
           />
         </label>
         <label>
-          Username
+          Username:
           <input
             type="text"
             value={username}
@@ -86,7 +87,7 @@ function SignupForm() {
           />
         </label>
         <label>
-          Password
+          Password:
           <input
             type="password"
             value={password}
@@ -94,7 +95,7 @@ function SignupForm() {
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <button className='signup-button' type="submit">Sign Up</button>
       </form>
     </div>
   );

@@ -7,8 +7,6 @@ import SignupFormModal from '../SignupFormModal';
 import '../../css/Navigation.css';
 import * as sessionActions from '../../store/session';
 
-
-
 const Navigation = ({ isLoaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);

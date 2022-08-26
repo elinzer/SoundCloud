@@ -28,7 +28,7 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='login-form-container' onSubmit={handleSubmit}>
       <ul className='login-errors'>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
