@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as commentActions from '../../store/comments';
 import { useEffect, useState } from 'react';
 import '../../css/SongPage.css'
+import defaultImage from '../../images/notsoundcloud.png';
 
-const SongPage = ({audioProp}) => {
+const SongPage = ({ audioProp }) => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [songAudio, setSongAudio] = audioProp;
@@ -23,7 +24,7 @@ const SongPage = ({audioProp}) => {
     }, [dispatch]);
 
     if (!song) {
-        return `Whoops something went wrong!`
+        return "Whoops, something went wrong!"
     }
 
     const handleClick = (e) => {
@@ -56,7 +57,10 @@ const SongPage = ({audioProp}) => {
             <div className='song-page-container'>
                 <div className='song-card'>
                     <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                        <img className='song-img' src={song.imageUrl}></img>
+                        <img className='song-img'
+                            src={song.imageUrl}
+                            onError={(e) => e.target.src = defaultImage}
+                        ></img>
                         <div className='play-icon-div'>
                             <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                         </div>
@@ -78,10 +82,12 @@ const SongPage = ({audioProp}) => {
         <div className='song-page-container'>
             <div className='song-card'>
                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                    <img className='song-img' src={song.imageUrl}></img>
+                    <img className='song-img' src={song.imageUrl}
+                        onError={(e) => e.target.src = defaultImage}
+                    ></img>
                     <div className='play-icon-div'>
-                            <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
-                        </div>
+                        <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
+                    </div>
                 </div>
                 <div className='title'><h4>{song.title}</h4></div>
                 <div className='description'>About: {song.description}</div>

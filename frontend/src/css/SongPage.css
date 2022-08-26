@@ -6,7 +6,7 @@
 }
 
 .song-card {
-    background-color: grey;
+    background: linear-gradient(315deg, rgb(210, 158, 119) 0%, rgb(90, 77, 67) 100%);
 
 }
 
