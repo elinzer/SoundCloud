@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/songs';
+import '../../css/UploadPage.css'
 
 const UploadPage = () => {
     const dispatch = useDispatch();
@@ -45,9 +47,9 @@ const UploadPage = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Song Title:
+        <div className="upload-page">
+            <form className="upload-container" onSubmit={handleSubmit}>
+                <label className="upload-input">Song Title:
                     <input
                         type='text'
                         value={title}
@@ -56,7 +58,7 @@ const UploadPage = () => {
                         required
                     ></input>
                 </label>
-                <label>Description:
+                <label className="upload-input">Description:
                     <input
                         type='text'
                         value={description}
@@ -65,7 +67,7 @@ const UploadPage = () => {
                         required
                     ></input>
                 </label>
-                <label>
+                <label className="upload-input">
                     File/Url:
                     <input
                         type='text'
@@ -75,7 +77,7 @@ const UploadPage = () => {
                         required
                     ></input>
                 </label>
-                <label>
+                <label className="upload-input">
                     Cover Image:
                     <input
                         type='text'
@@ -87,6 +89,8 @@ const UploadPage = () => {
                 </label>
                 <button type="submit">Upload Song</button>
             </form>
+            {/* <button onClick={() => { return (<Redirect to="/" />)}}
+            >View Library</button> */}
         </div>
     )
 }

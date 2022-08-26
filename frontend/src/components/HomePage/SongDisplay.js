@@ -6,6 +6,7 @@ import EditSongFormModal from '../EditSongForm';
 import { NavLink } from 'react-router-dom';
 import '../../css/SongDisplay.css';
 import '../../css/SongPage.css';
+import defaultImage from '../../images/notsoundcloud.png';
 
 const DisplayAllSongs = ({ audioProp }) => {
 
@@ -37,7 +38,10 @@ const DisplayAllSongs = ({ audioProp }) => {
                         return (
                             <div className='song-box'>
                                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                                    <img className='song-img' src={song.imageUrl}></img>
+                                    <img className='song-img'
+                                        src={song.imageUrl}
+                                        onError={(e) => e.target.src = defaultImage}>
+                                    </img>
                                     <div className='play-icon-div'>
                                         <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                                     </div>
@@ -64,7 +68,10 @@ const DisplayAllSongs = ({ audioProp }) => {
                 return (
                     <div className='song-box'>
                         <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                            <img className='song-img' src={song.imageUrl}></img>
+                            <img className='song-img'
+                                src={song.imageUrl}
+                                onError={(e) => e.target.src = defaultImage}>
+                            </img>
                             <div className='play-icon-div'>
                                 <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                             </div>

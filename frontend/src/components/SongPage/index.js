@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as commentActions from '../../store/comments';
 import { useEffect, useState } from 'react';
 import '../../css/SongPage.css'
+import defaultImage from '../../images/notsoundcloud.png';
 
-const SongPage = ({audioProp}) => {
+const SongPage = ({ audioProp }) => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [songAudio, setSongAudio] = audioProp;
@@ -23,7 +24,7 @@ const SongPage = ({audioProp}) => {
     }, [dispatch]);
 
     if (!song) {
-        return `Whoops something went wrong!`
+        return "Whoops, something went wrong!"
     }
 
     const handleClick = (e) => {
@@ -56,14 +57,19 @@ const SongPage = ({audioProp}) => {
             <div className='song-page-container'>
                 <div className='song-card'>
                     <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                        <img className='song-img' src={song.imageUrl}></img>
+                        <img className='song-img'
+                            src={song.imageUrl}
+                            onError={(e) => e.target.src = defaultImage}
+                        ></img>
                         <div className='play-icon-div'>
                             <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                         </div>
                     </div>
+                    <div>{song.description}</div>
                     <div><h4>{song.title}</h4></div>
-                    <div>About: {song.description}</div>
-                    <div className='comment-container'>Comments:
+                </div>
+                <div className='comment-section'>
+                    <div>Comments:
                         <ul className='comment-list'>
                             {commentsArr.map(comment =>
                                 (<li key={comment.id}>{comment.body}</li>))}
@@ -71,6 +77,7 @@ const SongPage = ({audioProp}) => {
                     </div>
                 </div>
             </div>
+
         )
     }
 
@@ -78,29 +85,31 @@ const SongPage = ({audioProp}) => {
         <div className='song-page-container'>
             <div className='song-card'>
                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                    <img className='song-img' src={song.imageUrl}></img>
+                    <img className='song-img' src={song.imageUrl}
+                        onError={(e) => e.target.src = defaultImage}
+                    ></img>
                     <div className='play-icon-div'>
-                            <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
-                        </div>
+                        <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
+                    </div>
                 </div>
-                <div className='title'><h4>{song.title}</h4></div>
                 <div className='description'>About: {song.description}</div>
-                <div className='comment-container'>Comments:
-                    <ul className='comment-list'>
-                        {commentsArr.map(comment =>
-                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}</li>))}
-                    </ul>
-                </div>
-                <div className='song-comment'>Leave a comment:
-                    <br />
+                <div className='title'><h4>{song.title}</h4></div>
+            </div>
+            <div>
+                <div className='song-comment'>
                     <textarea className='comment-textarea'
-                        placeholder='I love this song...'
+                        placeholder='Write a comment'
                         wrap='soft'
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                     ></textarea>
-                    <br />
                     <button onClick={handleClick}>Post</button>
+                </div>
+                <div className='comment-section'>Comments:
+                    <ul className='comment-list'>
+                        {commentsArr.map(comment =>
+                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}</li>))}
+                    </ul>
                 </div>
             </div>
         </div>

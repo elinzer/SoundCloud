@@ -7,8 +7,6 @@ import SignupFormModal from '../SignupFormModal';
 import '../../css/Navigation.css';
 import * as sessionActions from '../../store/session';
 
-
-
 const Navigation = ({ isLoaded }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -24,12 +22,14 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
       <>
+      <div>
         <NavLink to="/upload">
-          <button>
-          <i className="fa-solid fa-arrow-up-from-bracket"></i>
+          <button className='upload-button'>
+          <i className="fa-solid fa-arrow-up-from-bracket" />
             <span> Upload</span></button>
         </NavLink>
         <ProfileButton user={sessionUser} />
+      </div>
       </>
 
     );
