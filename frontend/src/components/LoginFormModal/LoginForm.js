@@ -23,13 +23,13 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data.message) setErrors([data.message]);
       });
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
+      <ul className='login-errors'>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
