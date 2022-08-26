@@ -59,3 +59,37 @@
     color: #fff;
     border-color: #ccc;
 }
+
+.upload-button {
+    padding: 2px 15px;
+    margin: 1px;
+    height: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 24px;
+    background: transparent;
+    color: #fff;
+    border-color: #ccc;
+}
+
+
+/* Profile Button CSS */
+
+.profile-dropdown {
+    list-style: none;
+    background-color: #fff;
+}
+
+.profile-button {
+    padding: 2px 15px;
+    margin: 1px;
+    height: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 24px;
+    background: transparent;
+    color: #fff;
+    border-color: #ccc;
+}

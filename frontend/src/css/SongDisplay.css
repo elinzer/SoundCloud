@@ -1,5 +1,5 @@
 .song-list-container {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -10,7 +10,7 @@
 }
 
 .song-box {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     text-align: center;
     margin: 5px 10px;
 }

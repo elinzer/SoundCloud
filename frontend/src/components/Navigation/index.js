@@ -22,12 +22,14 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
       <>
+      <div>
         <NavLink to="/upload">
-          <button>
-          <i className="fa-solid fa-arrow-up-from-bracket"></i>
+          <button className='upload-button'>
+          <i className="fa-solid fa-arrow-up-from-bracket" />
             <span> Upload</span></button>
         </NavLink>
         <ProfileButton user={sessionUser} />
+      </div>
       </>
 
     );

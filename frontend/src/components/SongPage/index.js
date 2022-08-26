@@ -65,9 +65,11 @@ const SongPage = ({ audioProp }) => {
                             <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                         </div>
                     </div>
+                    <div>{song.description}</div>
                     <div><h4>{song.title}</h4></div>
-                    <div>About: {song.description}</div>
-                    <div className='comment-container'>Comments:
+                </div>
+                <div className='comment-section'>
+                    <div>Comments:
                         <ul className='comment-list'>
                             {commentsArr.map(comment =>
                                 (<li key={comment.id}>{comment.body}</li>))}
@@ -75,6 +77,7 @@ const SongPage = ({ audioProp }) => {
                     </div>
                 </div>
             </div>
+
         )
     }
 
@@ -89,24 +92,24 @@ const SongPage = ({ audioProp }) => {
                         <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                     </div>
                 </div>
-                <div className='title'><h4>{song.title}</h4></div>
                 <div className='description'>About: {song.description}</div>
-                <div className='comment-container'>Comments:
-                    <ul className='comment-list'>
-                        {commentsArr.map(comment =>
-                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}</li>))}
-                    </ul>
-                </div>
-                <div className='song-comment'>Leave a comment:
-                    <br />
+                <div className='title'><h4>{song.title}</h4></div>
+            </div>
+            <div>
+                <div className='song-comment'>
                     <textarea className='comment-textarea'
-                        placeholder='I love this song...'
+                        placeholder='Write a comment'
                         wrap='soft'
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                     ></textarea>
-                    <br />
                     <button onClick={handleClick}>Post</button>
+                </div>
+                <div className='comment-section'>Comments:
+                    <ul className='comment-list'>
+                        {commentsArr.map(comment =>
+                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}</li>))}
+                    </ul>
                 </div>
             </div>
         </div>
