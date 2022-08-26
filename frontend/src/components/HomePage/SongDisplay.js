@@ -41,7 +41,7 @@ const DisplayAllSongs = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <NavLink key={song.id} to={`/songs/${song.id}`}>{song.title}
+                                    <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>{song.title}
                                     </NavLink>
                                 </div>
                                 <div>
@@ -67,7 +67,7 @@ const DisplayAllSongs = () => {
                                 <i className="fa-solid fa-circle-play" />
                             </div>
                         </div>
-                            <NavLink key={song.id} to={`/songs/${song.id}`}>
+                            <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
                                 <div className='title-card'>
                                     {song.title}
                                 </div>

@@ -12,6 +12,10 @@ const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
 
 
+  const logInDemo = () => {
+    return null;
+  }
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -29,7 +33,7 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <>
         <div className='right-side-nav-buttons'>
-          <button>Demo User</button>
+          <button onClick={logInDemo}>Demo User</button>
           <LoginFormModal />
           <SignupFormModal />
         </div>
