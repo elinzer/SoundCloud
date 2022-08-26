@@ -34,7 +34,8 @@ function SignupForm() {
       dispatch(sessionActions.signUp({ firstName, lastName, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
-          if (data && validationErrors) setValidationErrors(validationErrors);
+          console.log(data)
+          if (data.errors) setValidationErrors([data.errors.email]);
         });
     }
   };

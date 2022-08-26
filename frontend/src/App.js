@@ -31,9 +31,12 @@ function App() {
           <Route path='/songs/:id'>
             <SongPage audioProp={[songAudio, setSongAudio]} />
           </Route>
+          <Route>
+            <h2>404 - Sorry, there's nothing here!</h2>
+          </Route>
         </Switch>
       )}
-      <ReactAudioPlayer className='audioPlayer' src={songAudio} autoPlay={true} controls={true} volume={.25}/>
+      <ReactAudioPlayer className='audioPlayer' src={songAudio} autoPlay={true} controls={true} volume={.25} />
     </>
   );
 }
