@@ -13,6 +13,7 @@
 
 .create-acct-button {
     padding: 2px 16px;
+    margin: 2px;
     background-color: #f50;
     border-color: #f50;
     color: #fff;
@@ -32,6 +33,7 @@
     background: transparent;
     color: #fff;
     border-color: #ccc;
+    margin: 2px;
 }
 
 .home-icon {
@@ -43,4 +45,17 @@
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
+}
+
+.demo-button {
+    padding: 2px 15px;
+    margin: 1px;
+    height: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 24px;
+    background: transparent;
+    color: #fff;
+    border-color: #ccc;
 }

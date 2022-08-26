@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
-import SignupFormModal from '../SignupFormModal';
+// import { Redirect, NavLink } from 'react-router-dom';
+// import SignupFormModal from '../SignupFormModal';
 import '../../css/LoginForm.css';
 
 function LoginForm() {
