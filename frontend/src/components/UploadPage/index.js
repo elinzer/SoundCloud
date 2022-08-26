@@ -49,6 +49,7 @@ const UploadPage = () => {
     return (
         <div className="upload-page">
             <form className="upload-container" onSubmit={handleSubmit}>
+                <h3>Upload a new song:</h3>
                 <label className="upload-input">Song Title:
                     <input
                         type='text'
@@ -87,10 +88,11 @@ const UploadPage = () => {
                         required
                     ></input>
                 </label>
-                <button type="submit">Upload Song</button>
+                <div className="bottom-buttons">
+                <button type="submit" className="upload-form-submit">Upload Song</button>
+            <NavLink to='/'><button className="view-library">View Library</button></NavLink>
+                </div>
             </form>
-            {/* <button onClick={() => { return (<Redirect to="/" />)}}
-            >View Library</button> */}
         </div>
     )
 }

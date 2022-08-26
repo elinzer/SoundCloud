@@ -1,3 +1,8 @@
+.upload-page {
+    background: url(../images/backgroundupload.png) no-repeat center center;
+    height: 500px;
+    display: flex;
+}
 
 .upload-container {
     width: 50%;
@@ -9,9 +14,35 @@
     justify-content: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
-    border: thick double rgba(230, 147, 22, 0.6);
+    border-radius: 4px;
+    background-color: white;
 }
 
 .upload-input {
     padding: 2px;
+}
+
+.view-library {
+    margin: 2px;
+    border: none;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.view-library:hover {
+    box-shadow: 1px 1px 1px grey;
+}
+
+.upload-form-submit {
+    border: none;
+    padding: 2px;
+}
+
+.upload-form-submit:hover {
+    box-shadow: 1px 1px 1px grey;
+}
+
+.bottom-buttons {
+    display: inline;
+    margin-top: 2px;
 }
