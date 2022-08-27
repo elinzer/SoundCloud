@@ -9,6 +9,7 @@
     align-items: center;
     flex-direction: row-reverse;
     font-size: 14px;
+    height: 300px;
 }
 
 .song-img {
@@ -39,6 +40,19 @@ div.image-icon-holder:hover > div.play-icon-div {
 .song-comment {
     font-size: 14px;
     display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.post-comment-button {
+    border-radius: 2px;
+    border: 1px solid gray;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.post-comment-button:hover {
+    box-shadow: .5px .5px .5px .5px;
 }
 
 .comment-textarea {
@@ -48,12 +62,43 @@ div.image-icon-holder:hover > div.play-icon-div {
     width: 300px;
 }
 
+.comment-textarea:focus {
+    outline: none;
+}
+
+
 .comment-section {
     /* border: 1px solid black; */
     display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 50px;
 }
 
 .comment-list {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     font-size: 14px;
+    list-style: none;
+    max-width: 50%;
+}
+
+.single-comment {
+    border: .5px solid grey;
+    border-radius: 3px;
+    max-width: fit-content;
+    padding: 10px;
+    margin: 10px 0px;
+
+}
+
+/* .single-comment:hover {
+    background-color: rgba(243, 210, 186, 0.646);
+} */
+
+.comment-header-div {
+    margin-left: 20px;
+}
+
+.time-stamp {
+    font-style: italic;
 }
