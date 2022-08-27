@@ -27,6 +27,7 @@ const DisplayAllSongs = ({ audioProp }) => {
         return (
             <div>
                 <h3>Your Library:</h3>
+                <div>{userSongs.length === 0 ? "You don't have any songs yet! Why not upload one?" : null}</div>
                 <div className='song-list-container'>
                     {userSongs.map(song => {
                         return (

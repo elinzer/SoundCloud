@@ -3,7 +3,7 @@
 ## Database Schema Design
 
 
-<img src='imgs/soundcloud_dbdiagram.png'>
+<img src='../imgs/soundcloud_dbdiagram.png'>
 
 ## API Documentation
 
@@ -373,7 +373,6 @@ Returns the details of a song specified by its id.
       "url": "audio url",
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url",
       "Artist": {
         "id": 1,
         "username": "JohnSmith",

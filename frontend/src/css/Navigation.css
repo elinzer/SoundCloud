@@ -78,7 +78,8 @@
 
 .profile-dropdown {
     list-style: none;
-    background-color: #fff;
+    /* background-color: transparent; */
+    position: absolute;
 }
 
 .profile-button {
@@ -92,4 +93,8 @@
     background: transparent;
     color: #fff;
     border-color: #ccc;
+}
+
+.logout-button {
+    margin-top: 5px;
 }

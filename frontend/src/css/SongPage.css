@@ -1,5 +1,5 @@
 .song-page-container {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Overpass', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .song-card {
@@ -8,7 +8,7 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: row-reverse;
-    font-size: 14px;
+    font-size: 16px;
     height: 300px;
 }
 
@@ -64,10 +64,12 @@ div.image-icon-holder:hover > div.play-icon-div {
 }
 
 .comment-textarea {
-    height: 23px;
+    font-family:  'Overpass', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 20px;
     border-radius: 4px;
     font-size: 14px;
     width: 400px;
+    padding-top: 7px;
 }
 
 .comment-textarea:focus {
