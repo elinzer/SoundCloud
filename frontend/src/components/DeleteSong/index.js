@@ -19,7 +19,7 @@ const DeleteSong = ({ song }) => {
 
     return (
         <>
-            <button onClick={handleClick}>
+            <button className="delete-button" onClick={handleClick}>
             <i className="fa-regular fa-trash-can" />
                 Delete</button>
         </>

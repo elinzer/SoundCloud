@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import * as songActions from '../../store/songs';
+import '../../css/EditSongForm.css';
+
 
 function EditSongForm({song, modalProp}) {
 
@@ -34,8 +36,9 @@ function EditSongForm({song, modalProp}) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='edit-song-container'>
+            <form className='edit-song-form' onSubmit={handleSubmit}>
+                <h3>Update this song:</h3>
                 <label>Title:
                     <input
                         type='text'
@@ -68,7 +71,7 @@ function EditSongForm({song, modalProp}) {
                         required
                     ></input>
                 </label>
-                <button type="submit">Submit</button>
+                <button className='submit-button' type="submit">Submit</button>
             </form>
         </div>
     )

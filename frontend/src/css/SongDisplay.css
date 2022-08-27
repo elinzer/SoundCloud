@@ -40,3 +40,35 @@ textarea {
 .song-link {
     text-decoration: none;
 }
+
+.song-link:hover {
+    text-decoration: underline;
+}
+
+.song-link:visited {
+    color: black;
+}
+
+.delete-button {
+    background-color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 1px;
+}
+
+.delete-button:hover {
+    box-shadow: 1px 1px 1px gray;
+}
+
+.edit-button {
+    background-color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-right: 1px;
+}
+
+.edit-button:hover {
+    box-shadow: 1px 1px 1px gray;
+}

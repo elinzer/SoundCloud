@@ -1,10 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import DisplayAllSongs from "./SongDisplay";
-import bgImage from '../../images/Screen Shot 2022-08-25 at 8.14.10 PM.png'
-import '../../css/HomePage.css'
+import bgImage from '../../images/Screen Shot 2022-08-25 at 8.14.10 PM.png';
+import '../../css/HomePage.css';
 
 const HomePage = ({audioProp}) => {
+
 
     const sessionUser = useSelector(state => state.session.user)
 

@@ -69,12 +69,13 @@ const SongPage = ({ audioProp }) => {
                     <div><h4>{song.title}</h4></div>
                 </div>
                 <div className='comment-section'>
-                    <div>Comments:
-                        <ul className='comment-list'>
-                            {commentsArr.map(comment =>
-                                (<li key={comment.id}>{comment.body}</li>))}
-                        </ul>
-                    </div>
+                    <div className='comment-header-div'><h4>Comments:</h4></div>
+                    <ul className='comment-list'>
+                        {commentsArr.map(comment =>
+                        {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body}
+                            <li className='time-stamp'>Posted on {createdDate.toDateString()}</li>
+                        </li>)})}
+                    </ul>
                 </div>
             </div>
 
@@ -92,23 +93,25 @@ const SongPage = ({ audioProp }) => {
                         <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                     </div>
                 </div>
-                <div className='description'>About: {song.description}</div>
+                <div className='description'>{song.description}</div>
                 <div className='title'><h4>{song.title}</h4></div>
             </div>
             <div>
-                <div className='song-comment'>
-                    <textarea className='comment-textarea'
-                        placeholder='Write a comment'
-                        wrap='soft'
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                    ></textarea>
-                    <button onClick={handleClick}>Post</button>
-                </div>
-                <div className='comment-section'>Comments:
+                <div className='comment-section'>
+                    <div className='song-comment'>
+                        <textarea className='comment-textarea'
+                            placeholder='Write a comment'
+                            wrap='soft'
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        ></textarea>
+                        <button className='post-comment-button' onClick={handleClick}>Post</button>
+                    </div>
                     <ul className='comment-list'>
                         {commentsArr.map(comment =>
-                            (<li key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}</li>))}
+                            {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}
+                            <li className='time-stamp'>Posted on {createdDate.toDateString()}</li>
+                            </li>)})}
                     </ul>
                 </div>
             </div>

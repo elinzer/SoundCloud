@@ -4,12 +4,13 @@ import EditSongForm from "./EditSongForm";
 
 
 
+
 function EditSongFormModal({song}) {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
+            <button className="edit-button" onClick={() => setShowModal(true)}>
             <i className="fa-regular fa-pen-to-square" />
                 Edit</button>
             {showModal && (
