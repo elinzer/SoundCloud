@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/songs';
@@ -12,29 +12,47 @@ const UploadPage = () => {
     const [url, setSongUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [albumId, setAlbumId] = useState(null);
-    const [errors, setErrors] = useState([]);
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        const errors = [];
+
+        if (!url.endsWith('.mp3')) errors.push('Music file must be an mp3');
+
+        setValidationErrors(errors);
+
+    }, [url])
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const info = {
-            userId: sessionUser.id,
-            albumId,
-            title,
-            description,
-            url,
-            imageUrl
+
+        setHasSubmitted(true);
+
+        if (validationErrors.length) {
+            return alert('Please fix errors before submitting');
+        } else {
+            const info = {
+                userId: sessionUser.id,
+                albumId,
+                title,
+                description,
+                url,
+                imageUrl
+            }
+
+            dispatch(songActions.addSong(info))
+
+            setSongTitle('');
+            setDescription('');
+            setImageUrl('');
+            setSongUrl('')
+
+            alert(`Successfully uploaded`)
         }
 
-        dispatch(songActions.addSong(info))
-
-        setSongTitle('');
-        setDescription('');
-        setImageUrl('');
-        setSongUrl('')
-
-        alert(`Successfully uploaded`)
     }
 
     if (!sessionUser) {
@@ -52,6 +70,11 @@ const UploadPage = () => {
         <div className="upload-page">
             <form className="upload-container" onSubmit={handleSubmit}>
                 <h3>Upload a new song:</h3>
+                {hasSubmitted && validationErrors.length > 0 && (
+                    <ul>
+                        {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                )}
                 <label className="upload-input">Song Title:
                     <input
                         type='text'
