@@ -65,8 +65,10 @@ const SongPage = ({ audioProp }) => {
                             <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                         </div>
                     </div>
-                    <div>{song.description}</div>
-                    <div><h4>{song.title}</h4></div>
+                    <div>
+                    <div className='title'><h4>{song.title}</h4></div>
+                    <div className='description'>{song.description}</div>
+                    </div>
                 </div>
                 <div className='comment-section'>
                     <div className='comment-header-div'><h4>Comments:</h4></div>
@@ -93,8 +95,11 @@ const SongPage = ({ audioProp }) => {
                         <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
                     </div>
                 </div>
-                <div className='description'>{song.description}</div>
+                <div>
                 <div className='title'><h4>{song.title}</h4></div>
+                <div className='description'>{song.description}</div>
+                </div>
+
             </div>
             <div>
                 <div className='comment-section'>

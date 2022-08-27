@@ -12,6 +12,14 @@
     height: 300px;
 }
 
+.title {
+    background-color: black;
+    color: white;
+    width: fit-content;
+    font-size: 24px;
+    line-height: 37px;
+}
+
 .song-img {
     background-color: black;
 }
