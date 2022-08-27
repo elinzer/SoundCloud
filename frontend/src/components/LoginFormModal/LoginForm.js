@@ -13,10 +13,6 @@ function LoginForm() {
   const [errors, setErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
-  // if (sessionUser) return (
-  //   <Redirect to="/" />
-  // );
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -29,11 +25,12 @@ function LoginForm() {
 
   return (
     <form className='login-form-container' onSubmit={handleSubmit}>
+      <h2>Welcome Back!</h2>
       <ul className='login-errors'>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Username or Email
+        Username/Email:
         <input
           type="text"
           value={credential}
@@ -42,7 +39,7 @@ function LoginForm() {
           />
       </label>
       <label>
-        Password
+        Password:
         <input
           type="password"
           value={password}
@@ -50,7 +47,7 @@ function LoginForm() {
           required
           />
       </label>
-      <button type="submit">Log In</button>
+      <button className='login-button' type="submit">Log In</button>
       {/* <span>
       New user? <SignupFormModal/>
     </span> */}
