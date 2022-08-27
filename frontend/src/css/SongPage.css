@@ -59,7 +59,7 @@ div.image-icon-holder:hover > div.play-icon-div {
     height: 23px;
     border-radius: 4px;
     font-size: 14px;
-    width: 300px;
+    width: 400px;
 }
 
 .comment-textarea:focus {
@@ -100,5 +100,6 @@ div.image-icon-holder:hover > div.play-icon-div {
 }
 
 .time-stamp {
+    margin-top: 2px;
     font-style: italic;
 }
