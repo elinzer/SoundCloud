@@ -40,7 +40,9 @@ const UploadPage = () => {
     if (!sessionUser) {
         return (
             <div>
-                Please log in to upload!
+                <h2>
+                    Please log in to upload!
+                </h2>
             </div>
         )
     }
@@ -88,10 +90,9 @@ const UploadPage = () => {
                         required
                     ></input>
                 </label>
-                <div className="bottom-buttons">
                 <button type="submit" className="upload-form-submit">Upload Song</button>
-            <NavLink to='/'><button className="view-library">View Library</button></NavLink>
-                </div>
+                <span><NavLink to='/' className="view-library-link">View Library
+                </NavLink></span>
             </form>
         </div>
     )
