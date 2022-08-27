@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as songActions from '../../store/songs';
+import { useSelector} from 'react-redux';
 import DeleteSong from '../DeleteSong';
 import EditSongFormModal from '../EditSongForm';
 import { NavLink } from 'react-router-dom';
@@ -12,17 +10,13 @@ const DisplayAllSongs = ({ audioProp }) => {
 
     const [songAudio, setSongAudio] = audioProp;
 
-    const dispatch = useDispatch();
+
     const sessionUser = useSelector(state => {
         return state.session.user
     })
     const songList = useSelector(state => {
         return state.songs
     })
-
-    useEffect(() => {
-        dispatch(songActions.getSongs());
-    }, [dispatch])
 
 
     if (sessionUser) {
@@ -38,7 +32,7 @@ const DisplayAllSongs = ({ audioProp }) => {
                         return (
                             <div className='song-box'>
                                 <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                                    <img className='song-img'
+                                    <img alt='' className='song-img'
                                         src={song.imageUrl}
                                         onError={(e) => e.target.src = defaultImage}>
                                     </img>
@@ -68,7 +62,7 @@ const DisplayAllSongs = ({ audioProp }) => {
                 return (
                     <div className='song-box'>
                         <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                            <img className='song-img'
+                            <img alt='' className='song-img'
                                 src={song.imageUrl}
                                 onError={(e) => e.target.src = defaultImage}>
                             </img>

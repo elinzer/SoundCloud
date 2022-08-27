@@ -8,6 +8,7 @@ import UploadPage from './components/UploadPage';
 import SongPage from './components/SongPage';
 import ReactAudioPlayer from 'react-audio-player';
 import './css/AudioPlayer.css';
+import * as songActions from './store/songs';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +17,10 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+      dispatch(songActions.getSongs());
+  }, [dispatch])
 
   return isLoaded && (
     <>
