@@ -45,7 +45,7 @@ function SignupForm() {
     <div className="sign-up-form-container">
       <h3>Join NotSoundCloud</h3>
       {hasSubmitted && validationErrors.length > 0 && (
-        <ul>
+        <ul className="errors-list">
         {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       )}

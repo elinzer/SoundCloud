@@ -5,8 +5,9 @@
 }
 
 .upload-container {
-    width: 50%;
-    margin: auto;
+    width: 400px;
+    margin-top: 80px;
+    margin-left: 695px;
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -50,4 +51,11 @@
 
 .view-library-link:visited {
     color: black;
+}
+
+.upload-errors {
+    list-style: none;
+    color: red;
+    font-style: italic;
+    font-size: 13px;
 }
