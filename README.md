@@ -16,3 +16,7 @@ This project was built with:
 * Express
 * React
 * Redux
+
+## Landing Page
+
+<img width="1791" alt="Screen Shot 2022-08-27 at 5 53 59 PM" src="https://user-images.githubusercontent.com/101808290/187086034-8f900e43-874e-4605-9c8f-3a2b208f7149.png">
