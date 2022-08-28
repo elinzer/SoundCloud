@@ -75,7 +75,7 @@ const SongPage = ({ audioProp }) => {
                     <ul className='comment-list'>
                         {commentsArr.map(comment =>
                         {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body}
-                            <li className='time-stamp'>Posted on {createdDate.toDateString()} by {comment.User.username}</li>
+                            <li className='time-stamp'>Posted on {createdDate.toDateString()} </li>
                         </li>)})}
                     </ul>
                 </div>
@@ -115,7 +115,7 @@ const SongPage = ({ audioProp }) => {
                     <ul className='comment-list'>
                         {commentsArr.map(comment =>
                             {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}
-                            <li className='time-stamp'>Posted on {createdDate.toDateString()} by {comment.User.username}</li>
+                            <li className='time-stamp'>Posted on {createdDate.toDateString()} </li>
                             </li>)})}
                     </ul>
                 </div>
