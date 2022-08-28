@@ -1,4 +1,4 @@
-# SoundCloud Clone
+# Backend
 
 ## Database Schema Design
 
