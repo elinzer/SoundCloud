@@ -48,7 +48,8 @@ const UploadPage = () => {
             setSongTitle('');
             setDescription('');
             setImageUrl('');
-            setSongUrl('')
+            setSongUrl('');
+            setHasSubmitted(false);
 
             alert(`Successfully uploaded`)
         }
@@ -94,11 +95,11 @@ const UploadPage = () => {
                     ></input>
                 </label>
                 <label className="upload-input">
-                    File/Url:
+                        Song Url:
                     <input
                         type='text'
                         value={url}
-                        placeholder="file/url"
+                        placeholder="song url"
                         onChange={(e) => setSongUrl(e.target.value)}
                         required
                     ></input>
