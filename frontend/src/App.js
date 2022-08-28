@@ -41,7 +41,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <ReactAudioPlayer src={songAudio} autoPlay={true} controls={true} volume={.25} />
+      <ReactAudioPlayer src={songAudio} autoPlay={true} controls={true} volume={.30} />
     </>
   );
 }

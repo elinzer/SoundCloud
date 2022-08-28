@@ -82,12 +82,13 @@
     /* border: 1px solid gray; */
     position: absolute;
     width: fit-content;
-    right: 1px;
+    right: 3px;
 }
 
 .profile-button {
     padding: 2px 15px;
-    margin: 1px;
+    margin-right: 5px;
+    margin-left: 2px;
     height: 28px;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
