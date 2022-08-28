@@ -21,6 +21,9 @@
 
 .upload-input {
     padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
 }
 
 .upload-form-submit {
