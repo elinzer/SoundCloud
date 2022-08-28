@@ -29,3 +29,10 @@
     line-height: 24px;
     cursor: pointer;
 }
+
+.errors-list {
+    list-style: none;
+    color: red;
+    font-style: italic;
+    font-size: 13px;
+}

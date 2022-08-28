@@ -22,3 +22,10 @@
     line-height: 24px;
     cursor: pointer;
   }
+
+  .login-errors {
+    list-style: none;
+    color: red;
+    font-style: italic;
+    font-size: 13px;
+}

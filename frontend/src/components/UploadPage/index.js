@@ -71,7 +71,7 @@ const UploadPage = () => {
             <form className="upload-container" onSubmit={handleSubmit}>
                 <h3>Upload a new song:</h3>
                 {hasSubmitted && validationErrors.length > 0 && (
-                    <ul>
+                    <ul className="upload-errors">
                         {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 )}
