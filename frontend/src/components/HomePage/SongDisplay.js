@@ -19,43 +19,43 @@ const DisplayAllSongs = ({ audioProp }) => {
     })
 
 
-    if (sessionUser) {
-        let userSongs = songList.filter(song => {
-            return song.userId === sessionUser.id
-        })
+    // if (sessionUser) {
+    //     let userSongs = songList.filter(song => {
+    //         return song.userId === sessionUser.id
+    //     })
 
-        return (
-            <div>
-                <h3>Your Library:</h3>
-                <div>{userSongs.length === 0 ? "You don't have any songs yet! Why not upload one?" : null}</div>
-                <div className='song-list-container'>
-                    {userSongs.map(song => {
-                        return (
-                            <div className='song-box'>
-                                <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                                    <img alt='' className='song-img'
-                                        src={song.imageUrl}
-                                        onError={(e) => e.target.src = defaultImage}>
-                                    </img>
-                                    <div className='play-icon-div'>
-                                        <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
-                                    </div>
-                                </div>
-                                <div>
-                                    <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>{song.title}
-                                    </NavLink>
-                                </div>
-                                <div>
-                                    <EditSongFormModal song={song} />
-                                    <DeleteSong song={song} />
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        )
-    }
+    //     return (
+    //         <div>
+    //             <h3>Your Library:</h3>
+    //             <div>{userSongs.length === 0 ? "You don't have any songs yet! Why not upload one?" : null}</div>
+    //             <div className='song-list-container'>
+    //                 {userSongs.map(song => {
+    //                     return (
+    //                         <div className='song-box'>
+    //                             <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
+    //                                 <img alt='' className='song-img'
+    //                                     src={song.imageUrl}
+    //                                     onError={(e) => e.target.src = defaultImage}>
+    //                                 </img>
+    //                                 <div className='play-icon-div'>
+    //                                     <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
+    //                                 </div>
+    //                             </div>
+    //                             <div>
+    //                                 <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>{song.title}
+    //                                 </NavLink>
+    //                             </div>
+    //                             <div>
+    //                                 <EditSongFormModal song={song} />
+    //                                 <DeleteSong song={song} />
+    //                             </div>
+    //                         </div>
+    //                     )
+    //                 })}
+    //             </div>
+    //         </div>
+    //     )
+    // }
 
     return (
         <div className='song-list-container'>

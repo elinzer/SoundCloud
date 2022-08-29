@@ -3,7 +3,7 @@ import DisplayAllSongs from "./SongDisplay";
 import bgImage from '../../images/Screen Shot 2022-08-25 at 8.14.10 PM.png';
 import '../../css/HomePage.css';
 
-const HomePage = ({audioProp}) => {
+const HomePage = ({ audioProp }) => {
 
 
     const sessionUser = useSelector(state => state.session.user)
@@ -13,6 +13,12 @@ const HomePage = ({audioProp}) => {
         sessionHomePage = (
             <div className="container">
                 <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
+                <div>
+                    <h3>Explore what's popular today:</h3>
+                    <div>
+                    </div>
+                </div>
+
             </div>
         )
     } else {
@@ -20,9 +26,7 @@ const HomePage = ({audioProp}) => {
             <div className="container">
                 <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
                 <div>
-                    <h3>
-                        Explore what's popular today:
-                    </h3>
+                    <h3>Explore what's popular today:</h3>
                     <div>
                     </div>
                 </div>
@@ -33,7 +37,7 @@ const HomePage = ({audioProp}) => {
     return (
         <div>
             {sessionHomePage}
-            <DisplayAllSongs audioProp={audioProp}/>
+            <DisplayAllSongs audioProp={audioProp} />
         </div>
     )
 }

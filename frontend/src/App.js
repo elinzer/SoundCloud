@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
 import UploadPage from './components/UploadPage';
 import SongPage from './components/SongPage';
+import Library from './components/HomePage/Library.js';
 import ReactAudioPlayer from 'react-audio-player';
 import './css/AudioPlayer.css';
 import * as songActions from './store/songs';
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path='/songs/:id'>
             <SongPage audioProp={[songAudio, setSongAudio]} />
+          </Route>
+          <Route path='/library'>
+            <Library audioProp={[songAudio, setSongAudio]} />
           </Route>
           <Route>
             <h2>404 - Sorry, there's nothing here!</h2>

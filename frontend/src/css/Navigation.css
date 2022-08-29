@@ -63,7 +63,7 @@
 .upload-button {
     padding: 2px 15px;
     margin: 1px;
-    height: 28px;
+    height: 30px;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     cursor: pointer;
@@ -73,6 +73,18 @@
     border-color: #ccc;
 }
 
+.library-button {
+    padding: 2px 15px;
+    margin-right: 2px;
+    height: 30px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 24px;
+    background: transparent;
+    color: #fff;
+    border-color: #ccc;
+}
 
 /* Profile Button CSS */
 
@@ -89,7 +101,7 @@
     padding: 2px 15px;
     margin-right: 5px;
     margin-left: 2px;
-    height: 28px;
+    height: 30px;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     cursor: pointer;
@@ -106,4 +118,10 @@
 
 .logout-button {
     margin-top: 5px;
+    border: none;
+    background-color: white;
+    font-size: 14px;
+    font-family: 'Overpass';
+    cursor: pointer;
+    padding: 1px 1px;
 }

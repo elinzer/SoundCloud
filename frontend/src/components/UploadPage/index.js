@@ -115,7 +115,7 @@ const UploadPage = () => {
                     ></input>
                 </label>
                 <button type="submit" className="upload-form-submit">Upload Song</button>
-                <span><NavLink to='/' className="view-library-link">View Library
+                <span><NavLink to='/library' className="view-library-link">View Library
                 </NavLink></span>
             </form>
         </div>

@@ -23,6 +23,7 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <>
       <div>
+        <NavLink to='/library'><button className='library-button'>Library</button></NavLink>
         <NavLink to="/upload">
           <button className='upload-button'>
           <i className="fa-solid fa-arrow-up-from-bracket" />
