@@ -52,37 +52,6 @@ const SongPage = ({ audioProp }) => {
 
     }
 
-    if (!sessionUser) {
-        return (
-            <div className='song-page-container'>
-                <div className='song-card'>
-                    <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                        <img className='song-img'
-                            src={song.imageUrl}
-                            onError={(e) => e.target.src = defaultImage}
-                        ></img>
-                        <div className='play-icon-div'>
-                            <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
-                        </div>
-                    </div>
-                    <div>
-                    <div className='title'><h4>{song.title}</h4></div>
-                    <div className='description'>{song.description}</div>
-                    </div>
-                </div>
-                <div className='comment-section'>
-                    <div className='comment-header-div'><h4>Comments:</h4></div>
-                    <ul className='comment-list'>
-                        {commentsArr.map(comment =>
-                        {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body}
-                            <li className='time-stamp'>Posted on {createdDate.toDateString()} </li>
-                        </li>)})}
-                    </ul>
-                </div>
-            </div>
-
-        )
-    }
 
     return (
         <div className='song-page-container'>
@@ -103,7 +72,7 @@ const SongPage = ({ audioProp }) => {
             </div>
             <div>
                 <div className='comment-section'>
-                    <div className='song-comment'>
+                    {sessionUser && (<div className='song-comment'>
                         <textarea className='comment-textarea'
                             placeholder='Write a comment'
                             wrap='soft'
@@ -111,11 +80,11 @@ const SongPage = ({ audioProp }) => {
                             onChange={(e) => setComment(e.target.value)}
                         ></textarea>
                         <button className='post-comment-button' onClick={handleClick}>Post</button>
-                    </div>
+                    </div>)}
                     <ul className='comment-list'>
                         {commentsArr.map(comment =>
-                            {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body} {comment.userId === sessionUser.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}
-                            <li className='time-stamp'>Posted on {createdDate.toDateString()} </li>
+                            {let createdDate = new Date(comment.createdAt); return (<li className='single-comment' key={comment.id}>{comment.body} {comment.userId === sessionUser?.id ? (<button className='delete-comment' onClick={(e) => sendDelete(e, comment.id)}><i className="fa-regular fa-trash-can" /></button>) : null}
+                            <li className='time-stamp'>Posted on {createdDate.toDateString()} by {comment.user} </li>
                             </li>)})}
                     </ul>
                 </div>
