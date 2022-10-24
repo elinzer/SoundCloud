@@ -19,7 +19,7 @@ const Library = ({ audioProp }) => {
     })
 
     if (!sessionUser) {
-        return (<h2>Please log in to see your library!</h2>)
+        return (<h2 style={{fontFamily: 'Overpass'}}>Please log in to see your library!</h2>)
     }
 
 
@@ -34,7 +34,7 @@ const Library = ({ audioProp }) => {
                 <div className="container">
                     <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
                 </div>
-                <h3>Your Library:</h3>
+                <h3 style={{fontFamily: 'Overpass'}}>Your Library:</h3>
                 <div>{userSongs.length === 0 ? "You don't have any songs yet! Why not upload one?" : null}</div>
                 <div className='song-list-container'>
                     {userSongs.map(song => {
