@@ -3,6 +3,8 @@ import DisplayAllSongs from "./SongDisplay";
 import bgImage from '../../images/Screen Shot 2022-08-25 at 8.14.10 PM.png';
 import '../../css/HomePage.css';
 import Carousel from "../Carousel/Carousel";
+import header1 from '../../images/scheader1text.png';
+import header2 from '../../images/scheader2text.png';
 
 const HomePage = ({ audioProp }) => {
 
@@ -27,8 +29,8 @@ const HomePage = ({ audioProp }) => {
             <div className="container">
                 <div className="carousel-con">
                 <Carousel>
-                    <img style={{height: '465px'}} src="https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_a-3bb2d420.jpg" alt=''></img>
-                    <img src="https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg" alt=''></img>
+                    <img src={header1} alt=''></img>
+                    <img style={{height: '465px'}} src={header2} alt=''></img>
                 </Carousel>
                 </div>
                 {/* <img className="splash-page-bg" src={bgImage} alt='a concert'></img> */}

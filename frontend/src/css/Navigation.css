@@ -170,3 +170,11 @@
     color: #fff;
     text-decoration: none;
 }
+
+a i {
+    transition: all 0.3s linear;
+}
+
+a:hover i {
+    transform: scale(1.5);
+}
