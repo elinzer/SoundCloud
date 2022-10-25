@@ -22,15 +22,15 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
       <>
-      <div>
-        <NavLink to='/library'><button className='library-button'>Library</button></NavLink>
-        <NavLink to="/upload">
-          <button className='upload-button'>
-          <i className="fa-solid fa-arrow-up-from-bracket" />
-            <span> Upload</span></button>
-        </NavLink>
-        <ProfileButton user={sessionUser} />
-      </div>
+        <div>
+          <NavLink to='/library'><button className='library-button'>Library</button></NavLink>
+          <NavLink to="/upload">
+            <button className='upload-button'>
+              <i className="fa-solid fa-arrow-up-from-bracket" />
+              <span> Upload</span></button>
+          </NavLink>
+          <ProfileButton user={sessionUser} />
+        </div>
       </>
 
     );
@@ -49,10 +49,21 @@ const Navigation = ({ isLoaded }) => {
     <div className='nav-bar'>
       <NavLink exact to="/">
         <button className='home-icon'>
-        <i className="fa-solid fa-headphones-simple" />
+          <i className="fa-solid fa-headphones-simple" />
           <span> NotSOUNDCLOUD</span>
         </button>
       </NavLink>
+      <div className='about-dev'>
+        <div className='about-button-outer'> Project
+          <div className='about-button'><a className='dev-link' href="https://github.com/elinzer/SoundCloud" target="_blank"><i className="fa-brands fa-github"></i></a></div>
+        </div>
+        <div className='about-button-outer'>Contact the Dev
+          <div className='inner-about-buttons'>
+            <div className='about-button'><a className='dev-link' href="https://linkedin.com/in/elinzer" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
+            <div className='about-button'><a className='dev-link' href="https://github.com/elinzer" target="_blank"><i className="fa-brands fa-github"></i></a></div>
+          </div>
+        </div>
+      </div>
       {isLoaded && sessionLinks}
     </div>
 
