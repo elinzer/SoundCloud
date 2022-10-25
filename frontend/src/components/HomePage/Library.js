@@ -34,7 +34,9 @@ const Library = ({ audioProp }) => {
                 <div className="container">
                     <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
                 </div>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
                 <h3 style={{fontFamily: 'Overpass'}}>Your Library:</h3>
+                </div>
                 <div>{userSongs.length === 0 ? "You don't have any songs yet! Why not upload one?" : null}</div>
                 <div className='song-list-container'>
                     {userSongs.map(song => {

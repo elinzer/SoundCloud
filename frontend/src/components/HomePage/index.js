@@ -15,7 +15,7 @@ const HomePage = ({ audioProp }) => {
     if (sessionUser) {
         sessionHomePage = (
             <div className="container">
-                <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
+                {/* <img className="splash-page-bg" src={bgImage} alt='a concert'></img> */}
                 <div>
                     <h3>Explore what's popular today:</h3>
                     <div>
@@ -46,7 +46,9 @@ const HomePage = ({ audioProp }) => {
     return (
         <div>
             {sessionHomePage}
+            <div style={{display: 'flex', justifyContent: 'center'}}>
             <DisplayAllSongs audioProp={audioProp} />
+            </div>
         </div>
     )
 }
