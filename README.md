@@ -36,3 +36,7 @@ npx dotenv sequelize db:migrate
 npx dotenv sequelize db:seed:all
 ```
 * Finally, run ```npm start``` in ```/backend``` first and then in the ```/frontend``` terminal to start the backend and frontend servers!
+
+## Splash Page
+<img width="1775" alt="Screen Shot 2022-10-26 at 11 52 25 AM" src="https://user-images.githubusercontent.com/101808290/198087606-12e25831-0841-47df-93ea-531a9b815587.png">
+
