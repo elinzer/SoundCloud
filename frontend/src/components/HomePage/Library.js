@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import '../../css/SongDisplay.css';
 import '../../css/SongPage.css';
 import defaultImage from '../../images/notsoundcloud.png';
-import bgImage from '../../images/Screen Shot 2022-08-25 at 8.14.10 PM.png';
+import '../../css/Library.css';
 
 const Library = ({ audioProp }) => {
     const [songAudio, setSongAudio] = audioProp;
@@ -19,7 +19,7 @@ const Library = ({ audioProp }) => {
     })
 
     if (!sessionUser) {
-        return (<h2 style={{fontFamily: 'Overpass'}}>Please log in to see your library!</h2>)
+        return (<h2 style={{ fontFamily: 'Overpass' }}>Please log in to see your library!</h2>)
     }
 
 
@@ -29,16 +29,12 @@ const Library = ({ audioProp }) => {
         })
 
         return (
-            <div>
-
-                <div className="container">
-                    <img className="splash-page-bg" src={bgImage} alt='a concert'></img>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                <h3 style={{fontFamily: 'Overpass'}}>Your Library:</h3>
+            <div className='library-container'>
+                <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'white', width: '1260px' }}>
+                    <h3 style={{ fontFamily: 'Overpass' }}>Your Library:</h3>
                 </div>
                 <div>{userSongs.length === 0 ? "You don't have any songs yet! Why not upload one?" : null}</div>
-                <div className='song-list-container'>
+                <div className='my-song-list'>
                     {userSongs.map(song => {
                         return (
                             <div className='song-box'>

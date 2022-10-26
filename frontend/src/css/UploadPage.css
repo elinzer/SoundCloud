@@ -1,13 +1,27 @@
 .upload-page {
-    background: url(../images/backgroundupload.png) no-repeat center center;
-    height: 500px;
+    height: 100vh;
     display: flex;
+    /* border: 1px solid rebeccapurple; */
+    width: 1260px;
+    margin: auto;
+    background-color: white;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.middle-upload {
+    background: url(../images/backgroundupload.png) no-repeat center center;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
 }
 
 .upload-container {
     width: 400px;
-    margin-top: 80px;
-    margin-left: 695px;
+    margin-top: 180px;
+    /* margin-left: 695px; */
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -16,7 +30,7 @@
     font-family: 'Overpass', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     border-radius: 2px;
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .upload-input {
