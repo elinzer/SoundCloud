@@ -69,6 +69,7 @@ const UploadPage = () => {
 
     return (
         <div className="upload-page">
+            <div className="middle-upload">
             <form className="upload-container" onSubmit={handleSubmit}>
                 <h3>Upload a new song:</h3>
                 {hasSubmitted && validationErrors.length > 0 && (
@@ -118,6 +119,7 @@ const UploadPage = () => {
                 <span><NavLink to='/library' className="view-library-link">View Library
                 </NavLink></span>
             </form>
+            </div>
         </div>
     )
 }

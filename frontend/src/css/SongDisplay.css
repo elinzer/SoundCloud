@@ -1,23 +1,28 @@
+.outer-outer {
+    height: 100vh;
+    /* border: 1px solid red; */
+    background-color: white;
+}
+
 .song-list-container {
     /* border: 1px solid orange; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 1260px;
+    width: 1260px;
     justify-content: space-between;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
-    height: 500px;
-    margin-bottom: 50px;
+    /* height: 85vh; */
+    margin-bottom: 47px;
     background-color: white;
 }
 
 .song-box {
     /* border: 1px solid blue; */
     text-align: center;
-    margin-top: 5px;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin: 5px 2px;
+    height:fit-content;
 }
 
 .song-img {
