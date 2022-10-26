@@ -21,6 +21,7 @@
 
 .slideshowDots {
     text-align: center;
+    background-color: white;
   }
   .slideshowDot {
     display: inline-block;

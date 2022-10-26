@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 const Carousel = (props) => {
     const { children } = props;
     const [index, setIndex] = useState(0);
-    const delay = 4000;
+    const delay = 4500;
     const timeoutRef = useRef(null);
 
     function resetTimeout() {
