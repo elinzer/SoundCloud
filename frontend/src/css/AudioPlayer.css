@@ -1,6 +1,13 @@
-audio {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+.audio-container {
+    display: flex;
+    justify-content: center;
+}
 
+.audio-player {
+    width: 1260px;
+    font-family: Overpass;
+}
+
+.no-audio {
+    visibility: hidden;
 }
