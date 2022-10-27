@@ -1,4 +1,4 @@
-import { useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import DeleteSong from '../DeleteSong';
 import EditSongFormModal from '../EditSongForm';
 import { NavLink } from 'react-router-dom';
@@ -19,26 +19,28 @@ const DisplayAllSongs = ({ audioProp }) => {
     })
 
     return (
-        <div className='song-list-container'>
-            {songList.map(song => {
-                return (
-                    <div className='song-box'>
-                        <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
-                            <img alt='' className='song-img'
-                                src={song.imageUrl}
-                                onError={(e) => e.target.src = defaultImage}>
-                            </img>
-                            <div className='play-icon-div'>
-                                <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
+        <div className='outer-outer'>
+            <div className='song-list-container'>
+                {songList.map(song => {
+                    return (
+                        <div className='song-box'>
+                            <div className='image-icon-holder' style={{ position: 'relative', width: 'max-content' }}>
+                                <img alt='' className='song-img'
+                                    src={song.imageUrl}
+                                    onError={(e) => e.target.src = defaultImage}>
+                                </img>
+                                <div className='play-icon-div'>
+                                    <i className="fa-solid fa-circle-play" onClick={() => setSongAudio(song.url)} />
+                                </div>
                             </div>
-                        </div>
-                        <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
-                            <div className='title-card'>
-                                {song.title}
-                            </div>
-                        </NavLink>
-                    </div>)
-            })}
+                            <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
+                                <div className='title-card'>
+                                    {song.title}
+                                </div>
+                            </NavLink>
+                        </div>)
+                })}
+            </div>
         </div>
     )
 }
