@@ -28,7 +28,8 @@
     opacity: 75%;
 }
 
-.fa-circle-play {
+.fa-circle-play,
+.fa-circle-pause {
     font-size: 50px;
     position: absolute;
     top: 40%;
