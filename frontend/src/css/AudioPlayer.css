@@ -1,11 +1,17 @@
 .audio-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 1260px;
+    margin: auto;
 }
 
 .audio-player {
     width: 1260px;
     font-family: Overpass;
+    position: fixed;
+    bottom: 0;
 }
 
 .no-audio {
