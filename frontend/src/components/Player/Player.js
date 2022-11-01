@@ -12,6 +12,8 @@ const Player = (audioProp) => {
                 autoPlay
                 src={songAudio}
                 onPlayError={e => alert('Audio file is invalid and could not be played')}
+                showJumpControls={false}
+                showFilledVolume={true}
             />
         </div>
     );
