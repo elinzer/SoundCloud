@@ -7,9 +7,8 @@ import HomePage from './components/HomePage';
 import UploadPage from './components/UploadPage';
 import SongPage from './components/SongPage';
 import Library from './components/HomePage/Library.js';
-import ReactAudioPlayer from 'react-audio-player';
-import './css/AudioPlayer.css';
 import * as songActions from './store/songs';
+import Player from './components/Player/Player';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +44,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <ReactAudioPlayer src={songAudio} autoPlay={true} controls={true} volume={.30} />
+      <Player audioProp={[songAudio, setSongAudio]} />
     </>
   );
 }
