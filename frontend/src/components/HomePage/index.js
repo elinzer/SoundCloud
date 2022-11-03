@@ -4,6 +4,7 @@ import '../../css/HomePage.css';
 import Carousel from "../Carousel/Carousel";
 import header1 from '../../images/scheader1text.png';
 import header2 from '../../images/scheader2text.png';
+import Albums from "../Albums/Albums";
 
 const HomePage = ({ audioProp }) => {
 
@@ -35,6 +36,7 @@ const HomePage = ({ audioProp }) => {
             <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', fontFamily: 'Overpass'}}>
                 <div style={{width: "1260px", display: 'flex', justifyContent: 'center', backgroundColor: 'white'}}><h3>Explore what's popular today:</h3></div>
                 <DisplayAllSongs audioProp={audioProp} />
+                < Albums />
             </div>
         </div>
     )
