@@ -10,7 +10,6 @@ const Albums = () => {
     const albumList = Object.values(albums);
 
 
-
     return (
         <div>
             <div className='header-div'><h3>Check out these Albums:</h3></div>
