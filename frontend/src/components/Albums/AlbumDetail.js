@@ -21,7 +21,7 @@ const AlbumDetail = () => {
             <div>{album?.description}</div>
             <ul>
                 {albumSongs?.map(song => (
-                    <li key={song.id}>{song.title}</li>))}
+                    <li key={song.id}>{song.title},<img src={song.imageUrl}></img></li>))}
             </ul>
         </div>
     )

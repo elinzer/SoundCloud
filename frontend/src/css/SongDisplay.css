@@ -33,6 +33,10 @@
     margin: auto;
 }
 
+.title-card {
+    max-width: 200px;
+}
+
 .delete-comment {
     border: 0;
     border-radius: 3px;

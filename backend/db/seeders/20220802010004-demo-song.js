@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         userId: 4,
-        albumId: 4,
+        albumId: 5,
         title: "Electronic Rock (King Around Here)",
         description: "A pumped up electronic song with country vibes. Walk into the dive bar with confidence",
         url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=electronic-rock-king-around-here-15045.mp3",
@@ -46,19 +46,27 @@ module.exports = {
       },
       {
         userId: 4,
-        albumId: 4,
+        albumId: 6,
         title: "Guitar Electro Sport Trailer",
         description: "It's all in the title. What's your favorite sport?",
         url: "https://cdn.pixabay.com/download/audio/2022/07/25/audio_3266b47d61.mp3?filename=guitar-electro-sport-trailer-115571.mp3",
         imageUrl: "https://cdn.pixabay.com/audio/2022/07/25/05-12-16-975_200x200.png"
       },
       {
-        userId: 4,
-        albumId: 4,
+        userId: 3,
+        albumId: 3,
         title: "Inspirational Sentimental Romantic",
         description: "Who do you think about when you hear this tune?",
         url: "https://cdn.pixabay.com/download/audio/2022/08/10/audio_2014b63921.mp3?filename=inspirational-sentimental-romantic-116955.mp3",
         imageUrl: "https://cdn.pixabay.com/audio/2022/08/02/19-23-38-897_200x200.jpg"
+      },
+      {
+        userId: 1,
+        albumId: 1,
+        title: "Weeknds",
+        description: "A song about the weekend",
+        url: "https://cdn.pixabay.com/download/audio/2022/10/12/audio_061cead49a.mp3?filename=weeknds-122592.mp3",
+        imageUrl: "https://cdn.pixabay.com/audio/2022/10/12/09-28-04-865_200x200.jpg"
       }
 
     ])
