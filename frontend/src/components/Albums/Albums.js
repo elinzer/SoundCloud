@@ -2,6 +2,7 @@ import * as albumActions from '../../store/albums';
 import { useDispatch, useSelector } from 'react-redux';
 import albumCover from '../../images/albumcover.png';
 import '../../css/Albums.css';
+import { NavLink } from 'react-router-dom';
 
 const Albums = () => {
 
@@ -21,7 +22,7 @@ const Albums = () => {
                                 className='album-img'
                                 onError={(e) => e.target.src = albumCover}
                             />
-                            <div>{album.title}</div>
+                            <div><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></div>
                         </div>
                     )
                 })}
