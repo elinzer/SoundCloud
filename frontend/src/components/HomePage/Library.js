@@ -53,7 +53,7 @@ const Library = ({ audioProp }) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>{song.title}
+                                    <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}><div className='song-title'>{song.title}</div>
                                     </NavLink>
                                 </div>
                                 <div>

@@ -29,7 +29,7 @@ const DisplayAllSongs = ({ audioProp }) => {
                                     onError={(e) => e.target.src = defaultImage}>
                                 </img>
                                 <div className='play-icon-div'>
-                                    <i className="fa-solid fa-circle-play" onClick={(e) => {e.target.className = "fa-solid fa-circle-pause"; setSongAudio(song.url)}} />
+                                    <i className="fa-solid fa-circle-play" onClick={(e) => {e.target.className = "fa-solid fa-circle-pause"; e.target.id = 'now-playing'; setSongAudio(song.url)}} />
                                 </div>
                             </div>
                             <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>
