@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import albumCover from '../../images/albumcover.png';
 import '../../css/AlbumDetail.css'
+import EditAlbumFormModal from "./EditAlbum";
 
 const AlbumDetail = () => {
 
@@ -23,7 +24,7 @@ const AlbumDetail = () => {
                     </div>
                     <div className="album-desc">{album?.description}
                     </div>
-                    {myAlbum && (<button className="edit-album">Edit Album</button>)}
+                    {myAlbum && (<EditAlbumFormModal album={album} />)}
                 </div>
                 <img src={album?.imageUrl}
                     className="album-cover"
