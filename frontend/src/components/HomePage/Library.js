@@ -70,10 +70,10 @@ const Library = ({ audioProp }) => {
                 {userAlbums?.map((album) => {
                     return (
                         <div className='library-album-card'>
-                            <img src={album.imageUrl}
+                            <NavLink to={`/albums/${album.id}`}><img src={album.imageUrl}
                                 className='library-album-img'
                                 onError={(e) => e.target.src = albumCover}
-                            />
+                            /></NavLink>
                             <div><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></div>
                         </div>
                     )

@@ -18,10 +18,10 @@ const Albums = () => {
                 {albumList?.map((album) => {
                     return (
                         <div className='album-card'>
-                            <img src={album.imageUrl}
+                            <NavLink to={`/albums/${album.id}`}><img src={album.imageUrl}
                                 className='album-img'
                                 onError={(e) => e.target.src = albumCover}
-                            />
+                            /></NavLink>
                             <div><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></div>
                         </div>
                     )

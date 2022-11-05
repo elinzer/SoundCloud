@@ -1,0 +1,60 @@
+.album-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.album-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 1260px;
+    background: linear-gradient(315deg, rgb(211, 176, 150) 0%, rgb(212, 110, 32) 100%);
+    font-family: Overpass;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.name-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.album-cover {
+    width: 350px;
+    height: 350px;
+}
+
+.album-name {
+    background-color: black;
+    color: white;
+    width: fit-content;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.song-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1260px;
+    background-color: white;
+}
+
+.single-song {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-family: Overpass;
+}
+
+.single-song-img {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
