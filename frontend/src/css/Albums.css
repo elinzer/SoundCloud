@@ -26,3 +26,8 @@
     height: 50px;
     padding-top: 10px;
 }
+
+.album-link {
+    text-decoration: none;
+    color: black;
+}

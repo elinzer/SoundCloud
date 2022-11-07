@@ -74,7 +74,7 @@ const Library = ({ audioProp }) => {
                                 className='library-album-img'
                                 onError={(e) => e.target.src = albumCover}
                             /></NavLink>
-                            <div><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></div>
+                            <div><NavLink className='album-link' to={`/albums/${album.id}`}>{album.title}</NavLink></div>
                         </div>
                     )
                 })}

@@ -88,3 +88,8 @@ textarea {
 .edit-button:hover {
     box-shadow: 1px 1px 1px gray;
 }
+
+.hidden-button {
+    display: none;
+    z-index: -1;
+}
