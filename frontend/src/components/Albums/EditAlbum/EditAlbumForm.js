@@ -55,7 +55,9 @@ const EditAlbumForm = ({ album, modalProp }) => {
                         required
                     ></input>
                 </label>
-                <button type="submit">Update Album</button>
+                <button
+                className="album-submit-button"
+                type="submit">Update Album</button>
                 </form>
             </div>
     )
