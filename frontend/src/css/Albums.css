@@ -1,0 +1,33 @@
+.album-img {
+    width: 200px;
+    height: 200px;
+    border: .5px solid rgba(128, 128, 128, .5);
+}
+
+.album-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: white;
+    width: 1260px;
+    padding-bottom: 50px;
+}
+
+.album-card {
+    margin: 5px 2px;
+    text-align: center;
+}
+
+.header-div {
+    text-align: center;
+    background-color: white;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.album-link {
+    text-decoration: none;
+    color: black;
+}

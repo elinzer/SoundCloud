@@ -1,5 +1,5 @@
 .outer-outer {
-    height: 75vh;
+    /* height: 75vh; */
     /* border: 1px solid red; */
     background-color: white;
 }
@@ -31,6 +31,10 @@
     width: 200px;
     height: 200px;
     margin: auto;
+}
+
+.title-card {
+    max-width: 200px;
 }
 
 .delete-comment {
@@ -83,4 +87,9 @@ textarea {
 
 .edit-button:hover {
     box-shadow: 1px 1px 1px gray;
+}
+
+.hidden-button {
+    display: none;
+    z-index: -1;
 }

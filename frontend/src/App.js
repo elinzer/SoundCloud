@@ -9,6 +9,8 @@ import SongPage from './components/SongPage';
 import Library from './components/HomePage/Library.js';
 import * as songActions from './store/songs';
 import Player from './components/Player/Player';
+import * as albumActions from './store/albums';
+import AlbumDetail from './components/Albums/AlbumDetail';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ function App() {
 
   useEffect(() => {
       dispatch(songActions.getSongs());
+      dispatch(albumActions.getAlbums());
   }, [dispatch])
 
   return isLoaded && (
@@ -35,6 +38,9 @@ function App() {
           </Route>
           <Route path='/songs/:id'>
             <SongPage audioProp={[songAudio, setSongAudio]} />
+          </Route>
+          <Route path='/albums/:id'>
+            <AlbumDetail />
           </Route>
           <Route path='/library'>
             <Library audioProp={[songAudio, setSongAudio]} />

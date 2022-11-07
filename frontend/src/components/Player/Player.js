@@ -5,11 +5,17 @@ import '../../css/AudioPlayer.css';
 const Player = (audioProp) => {
     const [songAudio, setSongAudio] = audioProp.audioProp;
 
+
     return (
         <div className='audio-container'>
             <AudioPlayer
                 className={songAudio === '' ? 'no-audio' : 'audio-player'}
                 autoPlay
+                onPause={() => {
+                    document.getElementById('now-playing').className = "fa-solid fa-circle-pause";
+                    document.getElementById('now-playing').id = ''
+                }}
+                onPlay={() => { document.getElementById('now-playing').className = "fa-solid fa-circle-pause"}}
                 src={songAudio}
                 onPlayError={e => alert('Audio file is invalid and could not be played')}
                 showJumpControls={false}
