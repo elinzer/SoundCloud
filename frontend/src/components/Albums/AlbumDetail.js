@@ -14,7 +14,7 @@ const AlbumDetail = () => {
     const songState = useSelector(state => state.songs);
     const songs = Object.values(songState);
     const albumSongs = songs?.filter(song => song.albumId == id);
-    let myAlbum = sessionUser.id === album?.userId;
+    let myAlbum = sessionUser?.id === album?.userId;
 
     return (
         <div className="album-page">
