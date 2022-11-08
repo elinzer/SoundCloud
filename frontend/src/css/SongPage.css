@@ -1,5 +1,8 @@
 .song-page-container {
     font-family: 'Overpass', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .song-card {
@@ -10,6 +13,7 @@
     flex-direction: row-reverse;
     font-size: 16px;
     height: 300px;
+    width: 1260px;
 }
 
 .title {
@@ -83,7 +87,9 @@ div.image-icon-holder:hover > div.play-icon-div {
     display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    width: 1260px;
+    height: 70vh;
 }
 
 .comment-list {
