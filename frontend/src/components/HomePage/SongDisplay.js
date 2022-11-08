@@ -24,7 +24,6 @@ const DisplayAllSongs = ({ audioProp }) => {
     // console.log(player.current)
 
     const handleClick = (e) => {
-       e.target.className = 'hidden-button';
        e.target.id = 'now-playing';
     }
 
@@ -42,7 +41,7 @@ const DisplayAllSongs = ({ audioProp }) => {
                                     </img>
                                 </NavLink>
                                 <div className='play-icon-div'>
-                                    <i className="fa-solid fa-circle-play" onClick={(e) => { setSongAudio(song.url); handleClick(e) }} />
+                                    <i className="fa-solid fa-circle-play" onClick={(e) => { e.target.className = 'hidden-button'; setSongAudio(song.url) }} />
                                 </div>
                             </div>
                             <NavLink className='song-link' key={song.id} to={`/songs/${song.id}`}>

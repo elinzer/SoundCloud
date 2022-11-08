@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import albumCover from '../../images/albumcover.png';
 import '../../css/AlbumDetail.css'
@@ -32,12 +32,12 @@ const AlbumDetail = () => {
                     alt={album?.title} />
             </div>
             <div className="song-list">
-                {albumSongs?.map(song => (
-                    <div key={song.id} className='single-song'>
+                {albumSongs?.map((song, ind) => (
+                    <div key={ind} className='single-song'>
                         <div>
                             <img src={song.imageUrl} className='single-song-img'></img>
                         </div>
-                        <div>{song.title}</div>
+                        <div>{ind + 1}. <NavLink className='song-link' to={`/songs/${song.id}`}>{song.title}</NavLink></div>
                     </div>
                 ))}
             </div>
