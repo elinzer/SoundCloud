@@ -1,6 +1,6 @@
 # About NotSoundCloud
 
-NotSoundCloud is a web application inspired by SoundCloud, an application that allows users to upload their own music files and listen to other folks' music. <a href='https://my-soundcloud-clone.herokuapp.com/' target='_blank' >Click here to view the NotSoundCloud live site.</a>
+NotSoundCloud is a web application inspired by SoundCloud, an application that allows users to upload their own music files and listen to other folks' music. <a href='https://my-soundcloud-clone.herokuapp.com/' target='_blank' >Click here to view NotSoundCloud live.</a>
 
 ## Project Wiki
 See below links for this project's Wiki:
